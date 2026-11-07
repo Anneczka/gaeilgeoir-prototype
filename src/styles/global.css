@@ -1,0 +1,104 @@
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--text-primary);
+  background: #d5d8de; /* neutral background around the phone on a computer */
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-align: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+/* Visible focus ring on everything (accessibility) */
+:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* Text styles (from Figma) */
+.t-display { font-size: 32px; line-height: 40px; font-weight: 700; letter-spacing: -0.6px; }
+.t-h1 { font-size: 26px; line-height: 32px; font-weight: 700; letter-spacing: -0.4px; }
+.t-h2 { font-size: 20px; line-height: 28px; font-weight: 600; letter-spacing: -0.2px; }
+.t-h3 { font-size: 17px; line-height: 24px; font-weight: 600; letter-spacing: -0.1px; }
+.t-body-lg { font-size: 17px; line-height: 26px; font-weight: 400; }
+.t-body-lg-strong { font-size: 17px; line-height: 26px; font-weight: 500; }
+.t-body { font-size: 15px; line-height: 22px; font-weight: 400; }
+.t-body-strong { font-size: 15px; line-height: 22px; font-weight: 500; }
+.t-small { font-size: 13px; line-height: 18px; font-weight: 300; }
+.t-caption { font-size: 12px; line-height: 16px; font-weight: 500; }
+.t-overline { font-size: 11px; line-height: 16px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; }
+.t-button { font-size: 16px; line-height: 24px; font-weight: 600; }
+
+/* Phone frame: 375 x 812, centred on a computer */
+.stage {
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 16px 0;
+}
+
+.phone {
+  position: relative;
+  width: 375px;
+  height: 812px;
+  flex: none;
+  overflow: hidden;
+  border-radius: 32px;
+  background: var(--bg-app);
+  box-shadow: 0 8px 32px rgba(17, 24, 39, 0.18);
+  transform-origin: top center;
+}
+
+/* On a real phone: fill the screen, no frame */
+@media (max-width: 430px) {
+  .stage { padding: 0; }
+  .phone { border-radius: 0; box-shadow: none; }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

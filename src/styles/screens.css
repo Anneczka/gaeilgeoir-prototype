@@ -1,0 +1,71 @@
+.screen { position: absolute; inset: 0; display: flex; flex-direction: column; background: var(--bg-app); overflow: hidden; }
+.screen--surface { background: var(--bg-surface); }
+.screen__body { flex: 1 1 0; min-height: 0; overflow-y: auto; }
+.screen__actions { padding: 12px var(--space-20) 34px; display: flex; flex-direction: column; gap: var(--space-8); }
+
+/* ---------- 00 Welcome ---------- */
+.welcome { background: var(--bg-brand-hover); color: var(--text-on-brand); }
+.welcome__glow { position: absolute; left: -158px; top: -107px; width: 674px; height: 670px; }
+.welcome__glow img { position: absolute; inset: -14.93% -14.84%; width: 129.68%; height: 129.86%; max-width: none; }
+.welcome__content { position: relative; margin-top: 150px; padding: 0 var(--space-20); display: flex; flex-direction: column; gap: var(--space-12); align-items: center; text-align: center; }
+.welcome__logo { position: relative; width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-16); }
+.welcome__ring { position: absolute; left: calc(50% + 0.5px); top: 50%; transform: translate(-50%, -50%); }
+.welcome__avatar { position: relative; width: 129px; height: 131px; border-radius: var(--radius-full); object-fit: cover; }
+.welcome__actions { position: relative; margin-top: auto; }
+
+/* ---------- 00b Log in ---------- */
+.login__body { padding: var(--space-16) var(--space-20) 0; display: flex; flex-direction: column; gap: var(--space-20); }
+.login__forgot { color: var(--text-brand); align-self: flex-start; }
+
+/* ---------- 01 / 02 Onboarding ---------- */
+.onboarding { padding: 20px var(--space-20) var(--space-24); display: flex; flex-direction: column; gap: var(--space-12); }
+.onboarding__lead { color: var(--text-secondary); }
+.onboarding__list { display: flex; flex-direction: column; gap: var(--space-12); margin-top: var(--space-4); }
+.onboarding__note { color: var(--text-tertiary); }
+
+/* ---------- 03 Home ---------- */
+.home__scroll { padding: 72px var(--space-20) 108px; display: flex; flex-direction: column; gap: var(--space-20); }
+.home__greeting { display: flex; align-items: center; justify-content: space-between; }
+.home__hello { color: var(--text-secondary); }
+.talk-card {
+  display: flex; flex-direction: column; justify-content: center; gap: var(--space-12); padding: var(--space-20);
+  background: var(--bg-brand); color: var(--text-on-brand); border-radius: var(--radius-lg); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-height: 228px;
+}
+.talk-card__row { display: flex; align-items: center; gap: var(--space-12); }
+.avatar { display: flex; align-items: center; justify-content: center; flex: none; border-radius: var(--radius-full); background: var(--bg-surface); color: var(--text-success); }
+.avatar--m { width: 56px; height: 56px; }
+.talk-card__text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.talk-card__body { opacity: 0.85; }
+.section-title { display: flex; align-items: center; justify-content: space-between; }
+.section-title__link { color: var(--text-brand); }
+.course-card { display: flex; flex-direction: column; gap: var(--space-12); padding: var(--space-20); background: var(--bg-surface); border-radius: var(--radius-lg); box-shadow: var(--elevation-1); }
+.course-card__overline { color: var(--text-brand); }
+.course-card__body { color: var(--text-secondary); }
+.course-card__footer { display: flex; align-items: center; justify-content: space-between; }
+.course-card__count { color: var(--text-secondary); }
+.course-card__cta { color: var(--text-brand); }
+.rank-card { display: flex; align-items: center; gap: var(--space-12); padding: var(--space-12) var(--space-12) var(--space-12) var(--space-16); background: var(--bg-brand-hover); color: var(--text-on-brand); border-radius: var(--radius-lg); box-shadow: var(--elevation-1); }
+.rank-card__num { width: 40px; height: 40px; flex: none; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-full); background: var(--green-900); }
+.rank-card__text { flex: 1 0 0; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-12); }
+.tile { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-8); padding: var(--space-16); border-radius: var(--radius-lg); box-shadow: var(--elevation-1); }
+.tile__icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-md); }
+.tile__text { color: var(--text-secondary); }
+.tile--mint { background: var(--accent-mint-50); } .tile--mint .tile__icon { background: var(--accent-mint-500); }
+.tile--orange { background: var(--accent-orange-50); } .tile--orange .tile__icon { background: var(--accent-orange-500); }
+.tile--yellow { background: var(--accent-yellow-50); } .tile--yellow .tile__icon { background: var(--accent-yellow-500); }
+.tile--purple { background: var(--accent-purple-50); } .tile--purple .tile__icon { background: var(--accent-purple-500); }
+.tile--blue { background: var(--accent-blue-50); } .tile--blue .tile__icon { background: var(--accent-blue-500); }
+
+/* ---------- Placeholder (screens not built yet) ---------- */
+.placeholder { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-8); padding: 0 var(--space-32); text-align: center; }
+.placeholder__body { color: var(--text-secondary); }
+
+.screen--top58 { padding-top: 58px; }
+.screen--top45 { padding-top: 45px; }
+.screen--top56 { padding-top: 56px; }
+
+/* Hide the computer scrollbar inside the phone (it narrows the content); scrolling still works */
+.screen__body { scrollbar-width: none; }
+.screen__body::-webkit-scrollbar { display: none; }

@@ -1,0 +1,84 @@
+/* ---------- Status bar ---------- */
+.status-bar {
+  position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+  height: 58px; display: flex; gap: 154px; align-items: center; justify-content: center;
+  padding: 21px 16px 19px; pointer-events: none;
+  color: #000; background: transparent; transition: color 0.15s;
+}
+.status-bar--light { color: var(--bg-app); }
+.status-bar__time, .status-bar__levels { flex: 1 0 0; min-width: 1px; height: 22px; display: flex; align-items: center; justify-content: center; }
+.status-bar__time { padding-top: 2px; font: 590 17px/22px -apple-system, 'SF Pro', system-ui, sans-serif; }
+.status-bar__levels { gap: 7px; padding-top: 1px; }
+
+/* ---------- Button ---------- */
+.btn {
+  display: flex; align-items: center; justify-content: center; gap: var(--space-8);
+  width: 100%; height: 52px; padding: 0 var(--space-20); border-radius: var(--radius-md);
+  white-space: nowrap; text-align: center;
+}
+.btn--primary { background: var(--bg-brand); color: var(--text-on-brand); }
+.btn--primary:hover { background: var(--bg-brand-hover); }
+.btn--secondary { background: var(--bg-subtle); color: var(--text-primary); }
+.btn--surface { background: var(--bg-surface); color: var(--text-primary); }
+.btn--ghost { color: var(--text-brand); }
+.btn--ghost-on-dark { color: var(--text-on-brand); }
+.btn:disabled { background: var(--gray-200); color: var(--gray-600); cursor: not-allowed; }
+.btn--ghost-on-dark:focus-visible { outline-color: var(--gray-0); }
+
+/* ---------- Icon button ---------- */
+.icon-btn { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; flex: none; border-radius: var(--radius-full); }
+
+/* ---------- Headers ---------- */
+.title-header { display: flex; align-items: center; gap: var(--space-4); height: 56px; padding: 0 var(--space-4); background: var(--bg-surface); }
+.step-header { display: flex; align-items: center; gap: var(--space-8); height: 56px; padding: 0 var(--space-4); background: var(--bg-app); }
+.step-header__bar { flex: 1 0 0; min-width: 1px; }
+.step-header__count { color: var(--text-secondary); }
+.step-header__spacer { width: 12px; flex: none; }
+
+/* ---------- Progress bar ---------- */
+.progress { height: 8px; background: var(--bg-subtle); border-radius: var(--radius-full); overflow: hidden; }
+.progress__fill { height: 100%; background: var(--bg-brand-accent); border-radius: var(--radius-full); }
+
+/* ---------- Option card ---------- */
+.option-card {
+  display: flex; align-items: center; gap: var(--space-12); width: 100%; padding: var(--space-16);
+  background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-lg);
+}
+.option-card--selected { background: var(--bg-brand-subtle); border-color: var(--border-brand); }
+.option-card__badge {
+  width: 44px; height: 44px; flex: none; display: flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-md); background: var(--bg-brand-subtle); color: var(--text-brand);
+}
+.option-card--selected .option-card__badge { background: var(--bg-brand); color: var(--text-on-brand); }
+.option-card__text { display: flex; flex-direction: column; gap: var(--space-4); flex: 1 0 0; min-width: 1px; }
+.option-card__desc { color: var(--text-secondary); }
+
+/* ---------- Text input ---------- */
+.text-input { display: flex; flex-direction: column; gap: 6px; width: 100%; }
+.text-input__field {
+  height: 52px; width: 100%; padding: 0 var(--space-16); background: var(--bg-surface); color: var(--text-primary);
+  border: 1px solid var(--border-strong); border-radius: var(--radius-md);
+}
+.text-input__field::placeholder { color: var(--text-tertiary); opacity: 1; }
+.text-input__field:focus { outline: none; border-color: var(--border-focus); box-shadow: 0 0 0 1px var(--border-focus); }
+.text-input__field--error { border-color: var(--border-error); box-shadow: 0 0 0 1px var(--border-error); }
+.text-input__hint { color: var(--text-secondary); }
+.text-input__error { color: var(--text-error); }
+
+/* ---------- Chip ---------- */
+.chip {
+  display: inline-flex; align-items: center; gap: var(--space-8); padding: var(--space-8) var(--space-12);
+  background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-full); white-space: nowrap;
+}
+
+/* ---------- Bottom nav ---------- */
+.bottom-nav {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 5;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px var(--space-16) 20px; background: var(--bg-surface); box-shadow: var(--elevation-2);
+}
+.bottom-nav__item { width: 72px; height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 40px; }
+.bottom-nav__item--active { background: var(--bg-success-subtle); }
+.bottom-nav__icon { height: 28px; width: 56px; display: flex; align-items: center; justify-content: center; }
+.bottom-nav__label { color: var(--text-secondary); }
+.bottom-nav__label--active { color: var(--text-success); font-weight: 600; }
