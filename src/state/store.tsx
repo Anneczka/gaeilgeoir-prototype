@@ -1,5 +1,8 @@
 import { createContext, useContext, useReducer, type Dispatch, type ReactNode } from 'react'
 
+export type Speaker = 'Pádraig' | 'Sibéal'
+export type Speed = '0.85x' | '1x' | '1.5x'
+
 export type State = {
   loggedIn: boolean
   level: string | null
@@ -7,6 +10,7 @@ export type State = {
   savedWords: string[]
   convStep: number
   wordStep: number
+  voice: { speaker: Speaker; speed: Speed }
 }
 
 export type Action =
@@ -15,6 +19,7 @@ export type Action =
   | { type: 'setDialect'; dialect: string }
   | { type: 'completeConvStep' }
   | { type: 'completeWordStep' }
+  | { type: 'setVoice'; speaker: Speaker; speed: Speed }
   | { type: 'saveWord'; word: string }
   | { type: 'reset' }
 
@@ -25,6 +30,7 @@ export const initialState: State = {
   savedWords: [],
   convStep: 0,
   wordStep: 0,
+  voice: { speaker: 'Pádraig', speed: '1x' },
 }
 
 export function reducer(state: State, action: Action): State {
@@ -39,6 +45,8 @@ export function reducer(state: State, action: Action): State {
       return { ...state, convStep: state.convStep + 1 }
     case 'completeWordStep':
       return { ...state, wordStep: state.wordStep + 1 }
+    case 'setVoice':
+      return { ...state, voice: { speaker: action.speaker, speed: action.speed } }
     case 'saveWord':
       return state.savedWords.includes(action.word)
         ? state

@@ -16,8 +16,8 @@ O Node.js do seu Mac (versão 14) é antigo demais. Por isso o projeto traz uma 
 - Plano e decisões: `docs/superpowers/`
 
 ## Estado atual
-- Pronto: Welcome → Log in → Nível → Dialeto → Home, e a barra de baixo (Home, Courses, Practice, Profile).
-- Próximo: T2 conversa por voz, T3 palavras novas, T4 voltar para casa.
+- Pronto: T1 (Welcome → Log in → Nível → Dialeto → Home) e T2 (conversa por voz simulada, correção, saída, ajustes de voz, etapa concluída). Barra de baixo (Home, Courses, Practice, Profile).
+- Próximo: T3 palavras novas (Practice → 1000 Word Way → lição) e T4 voltar para casa.
 
 ## Antes de publicar
 Nada é publicado sem perguntar a você.

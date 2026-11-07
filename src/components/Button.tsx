@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 
-type Variant = 'primary' | 'secondary' | 'surface' | 'ghost' | 'ghost-on-dark'
+type Variant = 'primary' | 'secondary' | 'outline' | 'surface' | 'ghost' | 'ghost-on-dark'
 
 type Props = {
   variant?: Variant

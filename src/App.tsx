@@ -6,6 +6,8 @@ import { Login } from './screens/Login'
 import { OnboardingLevel, OnboardingDialect } from './screens/Onboarding'
 import { Home } from './screens/Home'
 import { Placeholder } from './screens/Placeholder'
+import { Conversation } from './screens/Conversation'
+import { StepComplete } from './screens/StepComplete'
 
 /** Sends people who are not logged in back to Welcome (e.g. after a browser refresh). */
 function RequireLogin() {
@@ -39,6 +41,8 @@ export default function App() {
                 <Route path="/onboarding/level" element={<OnboardingLevel />} />
                 <Route path="/onboarding/dialect" element={<OnboardingDialect />} />
                 <Route path="/home" element={<Home />} />
+                <Route path="/conversation" element={<Conversation />} />
+                <Route path="/conversation/complete" element={<StepComplete />} />
                 <Route path="/courses" element={<Placeholder title="Courses" tab />} />
                 <Route path="/practice" element={<Placeholder title="Practice" tab />} />
                 <Route path="/profile" element={<Placeholder title="Profile" tab />} />

@@ -69,3 +69,23 @@
 /* Hide the computer scrollbar inside the phone (it narrows the content); scrolling still works */
 .screen__body { scrollbar-width: none; }
 .screen__body::-webkit-scrollbar { display: none; }
+
+.screen--top48 { padding-top: 48px; }
+
+/* ---------- 07 / 08 / 09 Conversation ---------- */
+.conv__body { padding: var(--space-8) var(--space-20) var(--space-24); display: flex; flex-direction: column; gap: var(--space-12); }
+
+/* ---------- 07c Step complete ---------- */
+.complete { padding: 110px var(--space-20) 0; display: flex; flex-direction: column; align-items: center; gap: var(--space-12); }
+.complete__badge { width: 88px; height: 88px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-full); background: var(--bg-success-subtle); }
+.complete__title { text-align: center; }
+.complete__lead { color: var(--text-secondary); text-align: center; }
+.complete__stats { display: flex; gap: var(--space-8); width: 100%; padding-top: var(--space-8); }
+.complete__stat { flex: 1 0 0; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: var(--space-12) 0; background: var(--bg-app); border-radius: var(--radius-md); white-space: nowrap; }
+.complete__stat-label { color: var(--text-secondary); }
+.complete__review { width: 100%; }
+.phrase-list { list-style: none; margin: 0; padding: 0 var(--space-16); width: 100%; background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-lg); }
+.phrase-list__row { display: flex; align-items: center; gap: var(--space-12); padding: var(--space-12) 0; border-bottom: 1px solid var(--border-default); }
+.phrase-list__row:last-child { border-bottom: 0; }
+.phrase-list__text { flex: 1 0 0; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.phrase-list__english { color: var(--text-secondary); }

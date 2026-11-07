@@ -35,6 +35,11 @@ describe('prototype store', () => {
     expect(s.savedWords.filter((w) => w === 'dia duit')).toHaveLength(1)
   })
 
+  it('setVoice stores speaker and speed', () => {
+    const s = reducer(initialState, { type: 'setVoice', speaker: 'Sibéal', speed: '1.5x' })
+    expect(s.voice).toEqual({ speaker: 'Sibéal', speed: '1.5x' })
+  })
+
   it('reset clears everything, even in the middle of a conversation', () => {
     let s = reducer(initialState, { type: 'login' })
     s = reducer(s, { type: 'completeConvStep' })
