@@ -3,15 +3,12 @@ import { Button } from '../components/Button'
 import { Icon } from '../components/Icon'
 import { IconButton } from '../components/IconButton'
 import { content } from '../data/content'
-import { fake } from '../data/fake'
-import { fill } from '../data/fill'
 import check from '../assets/icons/check.svg'
 import volume from '../assets/icons/volume.svg'
 
 /** 07c · Step complete */
 export function StepComplete() {
   const c = content.complete
-  const vars = { name: fake.user.name }
   return (
     <main className="screen screen--surface">
       <StatusBar />
@@ -34,10 +31,10 @@ export function StepComplete() {
           {c.phrases.map((p) => (
             <li key={p.irish} className="phrase-list__row">
               <div className="phrase-list__text">
-                <span className="t-body-strong">{fill(p.irish, vars)}</span>
-                <span className="t-small phrase-list__english">{fill(p.english, vars)}</span>
+                <span className="t-body-strong">{p.irish}</span>
+                <span className="t-small phrase-list__english">{p.english}</span>
               </div>
-              <IconButton label={`Play: ${fill(p.irish, vars)}`} onClick={() => {}}>
+              <IconButton label={`Play: ${p.irish}`} onClick={() => {}}>
                 <Icon src={volume} color="var(--icon-brand)" />
               </IconButton>
             </li>

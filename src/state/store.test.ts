@@ -35,6 +35,12 @@ describe('prototype store', () => {
     expect(s.savedWords.filter((w) => w === 'dia duit')).toHaveLength(1)
   })
 
+  it('removeWord takes a saved word out again', () => {
+    let s = reducer(initialState, { type: 'saveWord', word: 'Tosóidh' })
+    s = reducer(s, { type: 'removeWord', word: 'Tosóidh' })
+    expect(s.savedWords).toEqual([])
+  })
+
   it('setVoice stores speaker and speed', () => {
     const s = reducer(initialState, { type: 'setVoice', speaker: 'Sibéal', speed: '1.5x' })
     expect(s.voice).toEqual({ speaker: 'Sibéal', speed: '1.5x' })

@@ -28,7 +28,7 @@ const tileIcons: Record<string, string> = {
 export function Home() {
   const c = content.home
   const { state } = useStore()
-  const saved = Math.max(12, state.savedWords.length)
+  const saved = 12 + state.savedWords.length
   return (
     <main className="screen">
       <StatusBar />

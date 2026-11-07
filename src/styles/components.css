@@ -176,3 +176,15 @@
 .setting__note { color: var(--text-secondary); margin-top: var(--space-4); }
 .setting--footer { gap: var(--space-8); }
 .setting--footer .btn + .btn { margin-top: var(--space-8); }
+
+/* ---------- Tappable word, correction pill, save-word sheet, toast ---------- */
+.word-btn { display: inline; padding: 0; font: inherit; color: var(--text-brand); text-decoration: underline dotted; text-decoration-thickness: 7.5%; text-underline-position: from-font; text-underline-offset: 3px; cursor: pointer; }
+.pill-warning { align-self: flex-start; padding: var(--space-4) var(--space-12); border-radius: 100px; background: var(--accent-orange-50); color: var(--text-warning); }
+.word-sheet__row { display: flex; align-items: center; justify-content: space-between; gap: var(--space-12); }
+.word-sheet__tools { display: flex; gap: var(--space-4); margin-right: -10px; }
+.word-sheet__meaning { display: flex; flex-direction: column; gap: var(--space-12); padding: var(--space-8) var(--space-12); background: var(--bg-subtle); border-radius: var(--radius-md); }
+.word-sheet__label { color: var(--text-secondary); }
+.toast-wrap { position: absolute; left: var(--space-20); right: var(--space-20); bottom: 132px; z-index: 30; }
+.toast { display: flex; align-items: center; gap: var(--space-12); padding: var(--space-12) var(--space-12) var(--space-12) var(--space-16); background: var(--bg-inverse); color: var(--text-on-brand); border-radius: var(--radius-md); box-shadow: var(--elevation-2); }
+.toast__text { flex: 1 0 0; min-width: 0; }
+.toast__action { color: var(--green-300); min-height: 44px; padding: 0 var(--space-4); }

@@ -21,6 +21,7 @@ export type Action =
   | { type: 'completeWordStep' }
   | { type: 'setVoice'; speaker: Speaker; speed: Speed }
   | { type: 'saveWord'; word: string }
+  | { type: 'removeWord'; word: string }
   | { type: 'reset' }
 
 export const initialState: State = {
@@ -51,6 +52,8 @@ export function reducer(state: State, action: Action): State {
       return state.savedWords.includes(action.word)
         ? state
         : { ...state, savedWords: [...state.savedWords, action.word] }
+    case 'removeWord':
+      return { ...state, savedWords: state.savedWords.filter((w) => w !== action.word) }
     case 'reset':
       return initialState
   }

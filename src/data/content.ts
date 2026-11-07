@@ -68,25 +68,60 @@ export const content = {
     ],
   },
   conversation: {
-    goals: [
-      { overline: 'Module 2 · Step 1 of 3', title: 'Goal: say your name', done: 1 },
-      { overline: 'Module 2 · Step 2 of 3', title: 'Goal: ask how someone is', done: 2 },
+    // Three scripted steps. Words written as { w, en } are tappable: they open the "save word" sheet.
+    steps: [
+      {
+        overline: 'Module 2 · Step 1 of 3',
+        goal: 'Goal: Say Hello',
+        done: 1,
+        tutor: {
+          lines: [
+            ['Fáilte! ', { w: 'Tosóidh', en: 'Will start' }, ' muid le beannacht. Beannaigh dom.'],
+            ['Bain triail as: “Dia duit”'],
+          ],
+          english: 'Welcome! We’ll start with a greeting. Say hello to me. Try saying: “Hello”',
+        },
+        expected: { irish: 'Dia duit', english: 'Hello' },
+        // What the simulated microphone "hears", attempt by attempt
+        spoken: ['Dia a dúirt', 'Dia duit'],
+        fix: {
+          lines: ['Úsáid “duit” in ionad “a dúirt”.', 'Bain triail eile as: “Dia duit”'],
+          english: 'Use “duit” instead of “a dúirt”. Try again: “Hello”',
+        },
+      },
+      {
+        overline: 'Module 2 · Step 2 of 3',
+        goal: 'Goal: Ask how someone is',
+        done: 2,
+        tutor: {
+          lines: [
+            ['Dia is Muire duit! Anois, ', { w: 'fiafraigh', en: 'ask' }, ' díom cén chaoi a bhfuil mé.'],
+            ['Bain triail as: “Cén chaoi a bhfuil tú?”'],
+          ],
+          english: 'Hello to you too! Now, ask me how I am. Try saying: “How are you?”',
+        },
+        expected: { irish: 'Cén chaoi a bhfuil tú?', english: 'How are you?' },
+        spoken: ['Cén chaoi a bhfuil tú?'],
+        fix: null,
+      },
+      {
+        overline: 'Module 2 · Step 3 of 3',
+        goal: 'Goal: Give a simple reply',
+        done: 3,
+        tutor: {
+          lines: [
+            ['Tá mé go ', { w: 'maith', en: 'good' }, ', go raibh maith agat! Agus tú féin?'],
+            ['Bain triail as: “Tá mé go maith”'],
+          ],
+          english: 'I’m well, thank you! And you? Try saying: “I’m well”',
+        },
+        expected: { irish: 'Tá mé go maith', english: 'I’m well' },
+        spoken: ['Tá mé go maith'],
+        fix: null,
+      },
     ],
-    // Scripted turns (voice is simulated). {name} is replaced with the fake user name.
-    tutor: [
-      { irish: 'Cad is ainm duit? Abair: "Is mise…"', english: 'What\'s your name? Say: "My name is…"' },
-      { irish: 'Dia is Muire duit! Anois, fiafraigh díom cén chaoi a bhfuil mé.', english: 'Hello to you too! Now, ask me how I am.' },
-    ],
-    suggestions: [
-      { irish: 'Is mise {name}.', english: 'My name is {name}.' },
-      { irish: 'Cén chaoi a bhfuil tú?', english: 'How are you?' },
-    ],
-    heard: ['Is mise {misheard}', 'Cén chaoi a cainil tú?', 'Cén chaoi a bhfuil tú?'],
-    feedback: {
-      overline: 'Almost there',
-      title: 'Use "Cén chaoi a bhfuil tú?" instead of "a cainil".',
-      body: 'In English: "How are you?" Tap the mic and try again.',
-    },
+    genericFix: { line: 'Bain triail eile as: “{irish}”', english: 'Try again: “{english}”' },
+    almostThere: 'Almost there',
     suggestionOverline: 'What to say',
     hint: 'Hint',
     hold: 'Hold to speak',
@@ -99,12 +134,22 @@ export const content = {
     heardHelp: 'Tap the text to fix anything we got wrong, then send.',
     retake: 'Retake',
     send: 'Send',
+    finish: 'Finish the lesson',
     exit: {
       title: 'End this conversation?',
       body: 'Your progress in this step is saved. You can continue later from the course page.',
       keep: 'Keep talking',
       end: 'End conversation',
     },
+  },
+  word: {
+    translate: 'Translate to English',
+    help: 'Tap any Irish word in the lesson to see what it means and save it to My words.',
+    saved: 'Word saved to My words',
+    undo: 'Undo',
+    save: 'Save word to My words',
+    unsave: 'Remove word from My words',
+    play: 'Play word',
   },
   voice: {
     title: 'Voice settings',
@@ -125,16 +170,17 @@ export const content = {
   },
   complete: {
     title: 'Step complete!',
-    body: 'You said your name in Irish.',
+    body: 'You said hello and asked how someone is in Irish.',
     stats: [
-      { value: '4', label: 'phrases' },
+      { value: '3', label: 'phrases' },
       { value: '1', label: 'correction' },
       { value: '5 min', label: 'speaking' },
     ],
     reviewTitle: 'Phrases to review',
     phrases: [
-      { irish: 'Is mise {name}.', english: 'My name is {name}.' },
-      { irish: 'Cad is ainm duit?', english: 'What\'s your name?' },
+      { irish: 'Dia duit', english: 'Hello' },
+      { irish: 'Cén chaoi a bhfuil tú?', english: 'How are you?' },
+      { irish: 'Tá mé go maith', english: 'I’m well' },
     ],
     next: 'Next step: ask someone\'s name',
     back: 'Back to course',
