@@ -62,7 +62,7 @@ export function Home() {
           </Link>
         </div>
 
-        <CurrentCourseCard />
+        <CurrentCourseCard cta={c.courseView} />
 
         <RankCard />
 

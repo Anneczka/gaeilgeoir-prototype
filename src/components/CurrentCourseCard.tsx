@@ -3,8 +3,8 @@ import { ProgressBar } from './ProgressBar'
 import { content } from '../data/content'
 import { fake } from '../data/fake'
 
-/** UI/Current course card: the course in progress. `to` = where it goes (course detail by default). */
-export function CurrentCourseCard({ to = '/courses/1' }: { to?: string }) {
+/** UI/Current course card: the course in progress. `to` = where it goes, `cta` = the label that says so ("Continue →" resumes the lesson, "View course →" opens the detail). */
+export function CurrentCourseCard({ to = '/courses/1', cta }: { to?: string; cta?: string }) {
   const c = content.home
   return (
     <Link to={to} className="course-card">
@@ -14,7 +14,7 @@ export function CurrentCourseCard({ to = '/courses/1' }: { to?: string }) {
       <ProgressBar value={fake.course.lessonsDone / fake.course.lessonsTotal} label="Course progress" />
       <span className="course-card__footer">
         <span className="t-caption course-card__count">{`${fake.course.lessonsDone} of ${fake.course.lessonsTotal} lessons`}</span>
-        <span className="t-body-strong course-card__cta">{c.courseContinue}</span>
+        <span className="t-body-strong course-card__cta">{cta ?? c.courseContinue}</span>
       </span>
     </Link>
   )

@@ -55,6 +55,7 @@ export const content = {
     courseBody: 'Build confidence with greetings, introductions and the first exchanges a new learner needs.',
     courseProgress: '3 of 15 lessons',
     courseContinue: 'Continue →',
+    courseView: 'View course →',
     leaderboardTitle: "You're 12th this week",
     leaderboardBody: '60 XP to reach 11th · See leaderboard',
     practiseTitle: 'Practise',
