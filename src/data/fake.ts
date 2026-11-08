@@ -31,4 +31,19 @@ export const fake = {
       { rank: 14, name: 'Cáit_M', initials: 'C', xp: 219 },
     ],
   },
+  // Words already in "My words" at the start (12 in total). Irish needs checking by David.
+  myWords: [
+    { w: 'Dia duit', en: 'Hello', status: 'review' },
+    { w: 'Go raibh maith agat', en: 'Thank you', status: 'learned' },
+    { w: 'uisce', en: 'water', status: 'review' },
+    { w: 'Cad is ainm duit?', en: 'What’s your name?', status: 'learned' },
+    { w: 'Slán', en: 'Goodbye', status: 'review' },
+    { w: 'bainne', en: 'milk', status: 'learned' },
+    { w: 'arán', en: 'bread', status: 'review' },
+    { w: 'tae', en: 'tea', status: 'learned' },
+    { w: 'le do thoil', en: 'please', status: 'learned' },
+    { w: 'Dia dhuit ar maidin', en: 'Good morning', status: 'review' },
+    { w: 'Oíche mhaith', en: 'Good night', status: 'learned' },
+    { w: 'Sláinte', en: 'Cheers', status: 'review' },
+  ] as { w: string; en: string; status: 'review' | 'learned' }[],
 }

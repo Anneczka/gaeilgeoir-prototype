@@ -459,6 +459,17 @@ export const content = {
       { prompt: 'I’d like to make a booking', options: ['An bhfuil bord do bheirt ar fáil?', 'Ba mhaith liom áirithint a dhéanamh.', 'An féidir liom íoc?', 'Tá ocras orm.'], answer: 1, why: '"Áirithint" means "booking" or "reservation".' },
     ],
   },
+  myWords: {
+    title: 'My words',
+    tabs: [
+      { key: 'all', label: 'All ({n})' },
+      { key: 'review', label: 'To review' },
+      { key: 'learned', label: 'Learned' },
+    ],
+    play: 'Play {word}',
+    emptyReview: 'Nothing to review right now.',
+    emptyLearned: 'Words you have learned will show up here.',
+  },
   nav: { home: 'Home', courses: 'Courses', practice: 'Practice', profile: 'Profile' },
   placeholder: { title: 'Coming soon', body: 'This screen is not built yet in the prototype.', back: 'Back' },
   common: { back: 'Back', close: 'Close' },

@@ -233,3 +233,13 @@
 .quiz-review__item:last-child { border-bottom: 0; }
 .quiz-review__prompt { color: var(--text-secondary); }
 .quiz-review__answer { display: flex; align-items: center; gap: var(--space-8); }
+
+/* ---------- My words ---------- */
+.mywords { padding: var(--space-16) var(--space-20) var(--space-24); display: flex; flex-direction: column; gap: var(--space-16); }
+.mywords > * { flex: none; }
+.mywords__list { margin: 0; padding: 0 var(--space-16); background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-lg); }
+.mywords__row { display: flex; align-items: center; gap: var(--space-12); padding: var(--space-12) 0; border-bottom: 1px solid var(--border-default); }
+.mywords__row:last-child { border-bottom: 0; }
+.mywords__text { flex: 1 0 0; min-width: 0; display: flex; flex-direction: column; gap: 2px; overflow-wrap: anywhere; }
+.mywords__en, .mywords__empty { color: var(--text-secondary); }
+.mywords__play--on { background: var(--bg-brand-subtle); border-radius: var(--radius-full); }
