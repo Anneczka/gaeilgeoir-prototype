@@ -19,7 +19,8 @@ O Node.js do seu Mac (versão 14) é antigo demais. Por isso o projeto traz uma 
 - Pronto: T1 (Welcome → Log in → Nível → Dialeto → Home) e T2 (conversa por voz simulada, correção, saída, ajustes de voz, etapa concluída). Barra de baixo (Home, Courses, Practice, Profile).
 - Pronto: T3 (Practice → 1000 Word Way → lição de palavras → fim da lição) e T4 (barra de baixo e botões de voltar/X em todas as telas).
 - Pronto também: Courses (com pop-up de trocar nível), detalhe do curso, Profile e Settings (com o botão **Reset prototype** no fim, para começar um novo participante).
-- Próximo: as demais telas (Songs, Quizzes, My words, Podcast com erro, Free trial, Leaderboard...). Por enquanto elas aparecem como "Coming soon", sempre com um jeito de voltar.
+- Pronto também: Leaderboard (ranking, estado de participante novo, aba All time, pop-up "How XP works", interruptor nos Settings).
+- Próximo: as demais telas (Songs, Quizzes, My words, Podcast com erro, Free trial...). Por enquanto elas aparecem como "Coming soon", sempre com um jeito de voltar.
 
 ## Antes de publicar
 Nada é publicado sem perguntar a você.

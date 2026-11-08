@@ -1,0 +1,26 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="335" height="96" viewBox="0 0 335 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Illustration &#194;&#183; castle" clip-path="url(#clip0_0_185)">
+<path id="Vector" d="M60 158C137.32 158 200 136.51 200 110C200 83.4903 137.32 62 60 62C-17.3199 62 -80 83.4903 -80 110C-80 136.51 -17.3199 158 60 158Z" fill="#B5E5CB"/>
+<path id="Vector_2" d="M290 158C361.797 158 420 137.405 420 112C420 86.5949 361.797 66 290 66C218.203 66 160 86.5949 160 112C160 137.405 218.203 158 290 158Z" fill="#8DD5AE"/>
+<g id="Group">
+<path id="Vector_3" d="M228 44H118V84H228V44Z" fill="#CBD0D6"/>
+<path id="Vector_4" d="M172 14H150V84H172V14Z" fill="#CBD0D6"/>
+<path id="Vector_5" d="M150 14L161 2L172 14H150Z" fill="#CBD0D6"/>
+<path id="Vector_6" d="M220 30H190V84H220V30Z" fill="#CBD0D6"/>
+<path id="Vector_7" d="M190 30L205 16L220 30H190Z" fill="#CBD0D6"/>
+<path id="Vector_8" d="M128 36H118V46H128V36Z" fill="#CBD0D6"/>
+<path id="Vector_9" d="M144 36H134V46H144V36Z" fill="#CBD0D6"/>
+</g>
+<g id="Group_2">
+<path id="Vector_10" d="M164 33C164 31.3431 162.657 30 161 30C159.343 30 158 31.3431 158 33V39C158 40.6569 159.343 42 161 42C162.657 42 164 40.6569 164 39V33Z" fill="#9AA1AB"/>
+<path id="Vector_11" d="M208 50C208 47.7909 206.209 46 204 46C201.791 46 200 47.7909 200 50V58C200 60.2091 201.791 62 204 62C206.209 62 208 60.2091 208 58V50Z" fill="#9AA1AB"/>
+<path id="Vector_12" d="M140 62C140 59.7909 138.209 58 136 58C133.791 58 132 59.7909 132 62V68C132 70.2091 133.791 72 136 72C138.209 72 140 70.2091 140 68V62Z" fill="#9AA1AB"/>
+</g>
+<path id="Vector_13" d="M170 130C236.274 130 290 118.359 290 104C290 89.6406 236.274 78 170 78C103.726 78 50 89.6406 50 104C50 118.359 103.726 130 170 130Z" fill="#70C894"/>
+</g>
+<defs>
+<clipPath id="clip0_0_185">
+<rect width="335" height="96" fill="white"/>
+</clipPath>
+</defs>
+</svg>

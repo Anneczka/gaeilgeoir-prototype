@@ -14,19 +14,22 @@ const items = [
 ]
 
 /** UI/Bottom nav: Home, Courses, Practice, Profile. Active tab = light green pill. */
-export function BottomNav() {
+export function BottomNav({ activePath }: { activePath?: string }) {
   return (
     <nav className="bottom-nav" aria-label="Main">
       {items.map((it) => (
-        <NavLink key={it.to} to={it.to} className={({ isActive }) => `bottom-nav__item${isActive ? ' bottom-nav__item--active' : ''}`}>
-          {({ isActive }) => (
+        <NavLink key={it.to} to={it.to} className={({ isActive }) => `bottom-nav__item${(activePath ? it.to === activePath : isActive) ? ' bottom-nav__item--active' : ''}`}>
+          {({ isActive: routeActive }) => {
+            const isActive = activePath ? it.to === activePath : routeActive
+            return (
             <>
               <span className="bottom-nav__icon">
                 <Icon src={it.icon} size={22} color={isActive ? 'var(--text-success)' : 'var(--icon-muted)'} />
               </span>
               <span className={`t-caption bottom-nav__label${isActive ? ' bottom-nav__label--active' : ''}`}>{it.label}</span>
             </>
-          )}
+            )
+          }}
         </NavLink>
       ))}
     </nav>

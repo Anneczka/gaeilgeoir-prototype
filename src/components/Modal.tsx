@@ -21,11 +21,11 @@ function useModal(onClose?: () => void) {
 }
 
 /** UI/Bottom sheet. `tall` = the big voice-settings sheet. */
-export function BottomSheet({ label, onClose, tall = false, className = '', children }: { label: string; onClose?: () => void; tall?: boolean; className?: string; children: ReactNode }) {
+export function BottomSheet({ label, onClose, tall = false, dark = false, className = '', children }: { label: string; onClose?: () => void; tall?: boolean; dark?: boolean; className?: string; children: ReactNode }) {
   const ref = useModal(onClose)
   return (
     <>
-      <div className="scrim scrim--light" onClick={onClose} aria-hidden="true" />
+      <div className={`scrim ${dark ? 'scrim--dark' : 'scrim--light'}`} onClick={onClose} aria-hidden="true" />
       <div ref={ref} className={`sheet${tall ? ' sheet--tall' : ''}${className ? ` ${className}` : ''}`} role="dialog" aria-modal="true" aria-label={label}>
         <span className="sheet__handle" aria-hidden="true" />
         {children}
