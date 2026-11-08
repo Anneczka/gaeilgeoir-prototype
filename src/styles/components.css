@@ -282,7 +282,7 @@ button.chip { min-height: 44px; }
 .podium__place--1 .podium__base { height: 141px; background: var(--medal-gold-base); }
 .podium__place--1 .podium__xp { color: var(--text-primary); }
 .podium__place--2 .podium__base { height: 97px; }
-.podium__place--2 .podium__name { font-weight: 400; }
+.podium__place--2 .podium__name { font-weight: 500; }
 .podium__place--2 .podium__xp { font-size: 15px; line-height: 22px; color: var(--text-success); }
 .podium__place--3 .podium__avatar { background: var(--medal-bronze-base); border-color: var(--medal-bronze-edge); color: var(--text-primary); }
 .podium__place--3 .podium__base { height: 84px; background: var(--medal-bronze-base); }
