@@ -18,6 +18,8 @@ import { Settings } from './screens/Settings'
 import { Leaderboard } from './screens/Leaderboard'
 import { Songs } from './screens/Songs'
 import { MyWords } from './screens/MyWords'
+import { Podcasts } from './screens/Podcasts'
+import { FreeTrial } from './screens/FreeTrial'
 import { Quizzes } from './screens/Quizzes'
 
 /** Sends people who are not logged in back to Welcome (e.g. after a browser refresh). */
@@ -65,6 +67,8 @@ export default function App() {
                 <Route path="/practice/songs" element={<Songs />} />
                 <Route path="/practice/quizzes" element={<Quizzes />} />
                 <Route path="/my-words" element={<MyWords />} />
+                <Route path="/practice/podcasts" element={<Podcasts />} />
+                <Route path="/free-trial" element={<FreeTrial />} />
                 <Route path="/leaderboard" element={<Leaderboard />} />
                 <Route path="*" element={<Placeholder />} />
               </Route>

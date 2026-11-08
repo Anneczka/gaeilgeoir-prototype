@@ -243,3 +243,25 @@
 .mywords__text { flex: 1 0 0; min-width: 0; display: flex; flex-direction: column; gap: 2px; overflow-wrap: anywhere; }
 .mywords__en, .mywords__empty { color: var(--text-secondary); }
 .mywords__play--on { background: var(--bg-brand-subtle); border-radius: var(--radius-full); }
+
+/* ---------- Podcasts (error) ---------- */
+.podcasts { padding: var(--space-16) var(--space-20) var(--space-24); display: flex; flex-direction: column; gap: var(--space-16); }
+.podcasts > * { flex: none; }
+.song__pause--small { width: 12px; height: 16px; border-left-width: 3px; border-right-width: 3px; }
+
+/* ---------- Free trial ---------- */
+.trial { padding: 32px var(--space-20) var(--space-24); display: flex; flex-direction: column; gap: var(--space-16); }
+.trial > * { flex: none; }
+.trial__overline { color: var(--text-brand); }
+.trial__steps { margin: 0; padding: var(--space-8) var(--space-20); background: var(--bg-surface); border-radius: var(--radius-lg); box-shadow: var(--elevation-1); list-style: none; }
+.trial__step { position: relative; display: flex; gap: 14px; padding: var(--space-12) 0; }
+.trial__step:not(:last-child)::after { content: ''; position: absolute; left: 17px; top: 48px; bottom: -12px; width: 1px; background: var(--green-700); }
+.trial__dot { width: 36px; height: 36px; flex: none; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-full); background: var(--bg-success-subtle); color: var(--text-success); }
+.trial__dot--now { background: var(--bg-brand); }
+.trial__text { flex: 1 0 0; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.trial__desc { color: var(--text-secondary); }
+.trial__plans { display: flex; gap: var(--space-12); }
+.trial__plan { flex: 1 0 0; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-4); padding: 14px var(--space-16); text-align: left; background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-lg); }
+.trial__plan--on { background: var(--bg-brand-subtle); border-color: var(--border-brand); }
+.trial__actions { flex: none; display: flex; flex-direction: column; gap: var(--space-8); padding: var(--space-12) var(--space-20) 34px; }
+.trial__note { text-align: center; color: var(--text-secondary); }
