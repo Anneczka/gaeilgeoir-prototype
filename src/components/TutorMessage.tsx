@@ -22,7 +22,7 @@ type Props = {
 export function TutorMessage({ lines, english, showEnglish, avatar, badge, onPlay, onTranslate, onWord }: Props) {
   return (
     <div className="tutor-message">
-      {avatar?.kind === 'photo' && <span className="avatar avatar--s avatar--photo" style={{ backgroundImage: `url("${tutorLook[avatar.speaker].photo}")`, backgroundPosition: tutorLook[avatar.speaker].avatarPos }} aria-hidden="true" />}
+      {avatar?.kind === 'photo' && <span className="avatar avatar--s avatar--photo" style={{ backgroundImage: `url("${tutorLook[avatar.speaker].photo}")` }} aria-hidden="true" />}
       {avatar?.kind === 'initial' && (
         <span className="avatar avatar--s avatar--tint t-caption" aria-hidden="true">
           {avatar.letter}
