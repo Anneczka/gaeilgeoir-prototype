@@ -104,7 +104,7 @@
 .step-goal__dot--done { background: var(--bg-brand-accent); }
 
 /* ---------- Tutor video ---------- */
-.tutor-video { position: relative; flex: none; height: 200px; border-radius: var(--radius-lg); overflow: hidden; background: #f7ede0; }
+.tutor-video { position: relative; flex: none; height: 200px; border-radius: var(--radius-lg); overflow: hidden; background: #ecf5e7; }
 .tutor-video__photo { position: absolute; width: 82.75%; height: 141.92%; left: 8.67%; top: 0.16%; max-width: none; }
 .tutor-video--avatar { background: var(--bg-brand-subtle); border-radius: var(--radius-xl); }
 .tutor-video__ring { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
