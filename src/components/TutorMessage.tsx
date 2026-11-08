@@ -1,7 +1,7 @@
 import { Icon } from './Icon'
 import volume from '../assets/icons/volume.svg'
 import translate from '../assets/icons/translate.svg'
-import photo from '../assets/img/tutor-video.png'
+import { tutorLook, type TutorName } from '../data/tutors'
 
 import type { Lines } from '../data/types'
 
@@ -10,7 +10,7 @@ type Props = {
   english: string
   showEnglish: boolean
   /** Round avatar next to the card. Only shown in the chat version (video hidden). */
-  avatar?: { kind: 'photo' } | { kind: 'initial'; letter: string } | null
+  avatar?: { kind: 'photo'; speaker: TutorName } | { kind: 'initial'; letter: string } | null
   /** Pill above the text, e.g. "ALMOST THERE" for corrections. */
   badge?: string
   onPlay: () => void
@@ -22,7 +22,7 @@ type Props = {
 export function TutorMessage({ lines, english, showEnglish, avatar, badge, onPlay, onTranslate, onWord }: Props) {
   return (
     <div className="tutor-message">
-      {avatar?.kind === 'photo' && <span className="avatar avatar--s avatar--photo" style={{ backgroundImage: `url("${photo}")` }} aria-hidden="true" />}
+      {avatar?.kind === 'photo' && <span className="avatar avatar--s avatar--photo" style={{ backgroundImage: `url("${tutorLook[avatar.speaker].photo}")`, backgroundPosition: tutorLook[avatar.speaker].avatarPos }} aria-hidden="true" />}
       {avatar?.kind === 'initial' && (
         <span className="avatar avatar--s avatar--tint t-caption" aria-hidden="true">
           {avatar.letter}

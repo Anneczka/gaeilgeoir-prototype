@@ -96,7 +96,7 @@ export function ConversationView({ steps, vars = {}, exitTo, completeTo, onCompl
   const speaker = state.voice.speaker
   const dialect = state.dialect ?? 'Munster'
   const progress = finished ? 1 : 0.4 + 0.2 * stepIdx
-  const avatar = videoOn ? null : speaker === 'Pádraig' ? ({ kind: 'photo' } as const) : ({ kind: 'initial', letter: speaker[0] } as const)
+  const avatar = videoOn ? null : ({ kind: 'photo', speaker } as const)
 
   function playTutor() {
     setSpeaking(true)
@@ -203,7 +203,7 @@ export function ConversationView({ steps, vars = {}, exitTo, completeTo, onCompl
       <div className="screen__body conv__body" ref={bodyRef}>
         <div className="conv__sticky">
           <StepGoal overline={fill(step.overline, vars)} title={fill(step.goal, vars)} done={step.done} />
-          {videoOn && <TutorVideo tag={tag} initial={initial} usePhoto={speaker === 'Pádraig'} speaking={speaking} onHide={() => setVideoOn(false)} />}
+          {videoOn && <TutorVideo tag={tag} initial={initial} speaker={speaker} speaking={speaking} onHide={() => setVideoOn(false)} />}
         </div>
         <div className="conv__chat">
           {msgs.map((m) =>
