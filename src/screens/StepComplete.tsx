@@ -3,12 +3,18 @@ import { Button } from '../components/Button'
 import { Icon } from '../components/Icon'
 import { IconButton } from '../components/IconButton'
 import { content } from '../data/content'
+import { useStore } from '../state/store'
 import check from '../assets/icons/check.svg'
 import volume from '../assets/icons/volume.svg'
 
-/** 07c · Step complete */
-export function StepComplete() {
-  const c = content.complete
+/** 07c · Step complete (for the conversation, and the same screen for a finished word lesson) */
+export function StepComplete({ kind = 'conversation' }: { kind?: 'conversation' | 'words' }) {
+  const { state } = useStore()
+  const words = kind === 'words'
+  const c = words ? content.wordComplete : content.complete
+  const lessonWords = String((3 + state.wordStep - 1) * 10) // same count as the 1000 Word Way path
+  const nextTo = words ? '/practice/words/lesson' : '/conversation'
+  const backTo = words ? '/practice/words' : '/courses/1'
   return (
     <main className="screen screen--surface">
       <StatusBar />
@@ -21,7 +27,7 @@ export function StepComplete() {
         <div className="complete__stats">
           {c.stats.map((s) => (
             <div key={s.label} className="complete__stat">
-              <span className="t-h2">{s.value}</span>
+              <span className="t-h2">{s.value.replace('{words}', lessonWords)}</span>
               <span className="t-small complete__stat-label">{s.label}</span>
             </div>
           ))}
@@ -42,8 +48,8 @@ export function StepComplete() {
         </ul>
       </div>
       <div className="screen__actions">
-        <Button to="/conversation">{c.next}</Button>
-        <Button variant="ghost" to="/courses/1">
+        <Button to={nextTo}>{c.next}</Button>
+        <Button variant="ghost" to={backTo}>
           {c.back}
         </Button>
       </div>

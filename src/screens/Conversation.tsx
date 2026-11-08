@@ -18,6 +18,7 @@ import { content } from '../data/content'
 import { fill } from '../data/fill'
 import { isCorrect, normalize } from '../logic/conversation'
 import { useStore } from '../state/store'
+import type { Step } from '../data/types'
 import pencil from '../assets/icons/pencil.svg'
 
 type Phase = 'idle' | 'recording' | 'heard'
@@ -35,9 +36,24 @@ const TOAST_MS = 3500
  * 09 · What we heard, 07b exit dialog, 09b voice settings, and the "save word" sheet.
  * The voice is simulated: what the microphone "hears" comes from content.ts.
  */
+export type LessonConfig = {
+  steps: readonly Step[]
+  /** Replaces {placeholders} in step texts, e.g. the lesson number */
+  vars?: Record<string, string>
+  /** Where "End conversation" goes */
+  exitTo: string
+  /** Where "Finish the lesson" goes */
+  completeTo: string
+  onComplete: 'conversation' | 'words'
+}
+
 export function Conversation() {
+  return <ConversationView steps={content.conversation.steps} exitTo="/home" completeTo="/conversation/complete" onComplete="conversation" />
+}
+
+/** The shared chat screen: used by the conversation lesson and by the 1000 Word Way word lesson. */
+export function ConversationView({ steps, vars = {}, exitTo, completeTo, onComplete }: LessonConfig) {
   const c = content.conversation
-  const steps = c.steps
   const navigate = useNavigate()
   const { state, dispatch } = useStore()
 
@@ -79,7 +95,7 @@ export function Conversation() {
   const step = steps[stepIdx]
   const speaker = state.voice.speaker
   const dialect = state.dialect ?? 'Munster'
-  const progress = finished ? 1 : [0.4, 0.6, 0.8][stepIdx]
+  const progress = finished ? 1 : 0.4 + 0.2 * stepIdx
   const avatar = videoOn ? null : speaker === 'Pádraig' ? ({ kind: 'photo' } as const) : ({ kind: 'initial', letter: speaker[0] } as const)
 
   function playTutor() {
@@ -151,8 +167,8 @@ export function Conversation() {
   }
 
   function finishLesson() {
-    dispatch({ type: 'completeConvStep' })
-    navigate('/conversation/complete', { replace: true })
+    dispatch({ type: onComplete === 'words' ? 'completeWordStep' : 'completeConvStep' })
+    navigate(completeTo, { replace: true })
   }
 
   function openWord(w: string, en: string) {
@@ -186,7 +202,7 @@ export function Conversation() {
 
       <div className="screen__body conv__body" ref={bodyRef}>
         <div className="conv__sticky">
-          <StepGoal overline={step.overline} title={step.goal} done={step.done} />
+          <StepGoal overline={fill(step.overline, vars)} title={fill(step.goal, vars)} done={step.done} />
           {videoOn && <TutorVideo tag={tag} initial={initial} usePhoto={speaker === 'Pádraig'} speaking={speaking} onHide={() => setVideoOn(false)} />}
         </div>
         <div className="conv__chat">
@@ -285,7 +301,7 @@ export function Conversation() {
       {exitOpen && (
         <Dialog title={c.exit.title} body={c.exit.body} onClose={() => setExitOpen(false)}>
           <Button onClick={() => setExitOpen(false)}>{c.exit.keep}</Button>
-          <Button variant="ghost" to="/home">
+          <Button variant="ghost" to={exitTo}>
             {c.exit.end}
           </Button>
         </Dialog>

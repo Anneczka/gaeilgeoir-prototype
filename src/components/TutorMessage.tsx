@@ -3,9 +3,7 @@ import volume from '../assets/icons/volume.svg'
 import translate from '../assets/icons/translate.svg'
 import photo from '../assets/img/tutor-video.png'
 
-/** A word the learner can tap to see its meaning and save it. */
-export type Segment = string | { readonly w: string; readonly en: string }
-export type Lines = readonly (readonly Segment[])[]
+import type { Lines } from '../data/types'
 
 type Props = {
   lines: Lines

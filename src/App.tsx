@@ -8,6 +8,9 @@ import { Home } from './screens/Home'
 import { Placeholder } from './screens/Placeholder'
 import { Conversation } from './screens/Conversation'
 import { StepComplete } from './screens/StepComplete'
+import { Practice } from './screens/Practice'
+import { WordWay } from './screens/WordWay'
+import { WordLesson } from './screens/WordLesson'
 
 /** Sends people who are not logged in back to Welcome (e.g. after a browser refresh). */
 function RequireLogin() {
@@ -43,8 +46,11 @@ export default function App() {
                 <Route path="/home" element={<Home />} />
                 <Route path="/conversation" element={<Conversation />} />
                 <Route path="/conversation/complete" element={<StepComplete />} />
+                <Route path="/practice/words" element={<WordWay />} />
+                <Route path="/practice/words/lesson" element={<WordLesson />} />
+                <Route path="/practice/words/complete" element={<StepComplete kind="words" />} />
                 <Route path="/courses" element={<Placeholder title="Courses" tab />} />
-                <Route path="/practice" element={<Placeholder title="Practice" tab />} />
+                <Route path="/practice" element={<Practice />} />
                 <Route path="/profile" element={<Placeholder title="Profile" tab />} />
                 <Route path="*" element={<Placeholder />} />
               </Route>

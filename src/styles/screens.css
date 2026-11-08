@@ -93,3 +93,29 @@
 .phrase-list__row:last-child { border-bottom: 0; }
 .phrase-list__text { flex: 1 0 0; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
 .phrase-list__english { color: var(--text-secondary); }
+
+/* ---------- 10 Practice ---------- */
+.practice { padding: var(--space-16) var(--space-20) 108px; display: flex; flex-direction: column; gap: var(--space-16); }
+.practice__lead { color: var(--text-secondary); }
+.wordway-card { display: flex; flex-direction: column; gap: var(--space-12); padding: var(--space-20); background: var(--bg-brand-subtle); border: 1px solid var(--border-brand); border-radius: var(--radius-xl); box-shadow: var(--elevation-1); }
+.wordway-card__row { display: flex; align-items: center; gap: var(--space-12); }
+.wordway-card__icon { width: 44px; height: 44px; flex: none; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-md); background: var(--bg-brand); }
+.wordway-card__text { display: flex; flex-direction: column; min-width: 0; }
+.wordway-card__count, .wordway-card__body { color: var(--text-secondary); }
+.tile--wide { grid-column: span 2; }
+
+/* ---------- 13 1000 Word Way path ---------- */
+.wordway { padding: var(--space-16) var(--space-20) var(--space-32); }
+.progress-card { display: flex; flex-direction: column; gap: var(--space-8); padding: var(--space-16); background: var(--bg-brand-subtle); border-radius: var(--radius-lg); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+.progress-card__row { display: flex; justify-content: space-between; align-items: center; }
+.progress-card__count { color: var(--text-brand); }
+.progress-card__caption { color: var(--text-secondary); }
+.path { position: relative; margin: var(--space-24) calc(var(--space-20) * -1) 0; }
+.path__line { position: absolute; left: 0; top: 0; }
+.path-node { position: absolute; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; white-space: nowrap; }
+.path-node__circle { width: 68px; height: 68px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-full); }
+.path-node__circle--done { background: var(--bg-brand-accent); }
+.path-node__circle--current { background: var(--bg-brand); border: 6px solid var(--border-brand); }
+.path-node__circle--locked { background: var(--bg-subtle); border: 2px solid var(--border-default); }
+.path-node__label--locked { color: var(--text-tertiary); }
+.path-node__range { color: var(--text-secondary); }

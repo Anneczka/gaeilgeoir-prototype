@@ -17,7 +17,8 @@ O Node.js do seu Mac (versão 14) é antigo demais. Por isso o projeto traz uma 
 
 ## Estado atual
 - Pronto: T1 (Welcome → Log in → Nível → Dialeto → Home) e T2 (conversa por voz simulada, correção, saída, ajustes de voz, etapa concluída). Barra de baixo (Home, Courses, Practice, Profile).
-- Próximo: T3 palavras novas (Practice → 1000 Word Way → lição) e T4 voltar para casa.
+- Pronto: T3 (Practice → 1000 Word Way → lição de palavras → fim da lição) e T4 (barra de baixo e botões de voltar/X em todas as telas).
+- Próximo: as demais telas (Courses, Songs, Quizzes, Profile, Settings, My words, Leaderboard...). Por enquanto elas aparecem como "Coming soon", sempre com um jeito de voltar.
 
 ## Antes de publicar
 Nada é publicado sem perguntar a você.

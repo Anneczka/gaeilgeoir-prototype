@@ -16,7 +16,7 @@ export function Placeholder({ title, tab = false }: { title?: string; tab?: bool
         <h1 className="t-h1">{title ?? c.title}</h1>
         <p className="t-body placeholder__body">{c.body}</p>
       </div>
-      {tab && <BottomNav />}
+      <BottomNav />
     </main>
   )
 }

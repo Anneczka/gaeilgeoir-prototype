@@ -188,3 +188,5 @@
 .toast { display: flex; align-items: center; gap: var(--space-12); padding: var(--space-12) var(--space-12) var(--space-12) var(--space-16); background: var(--bg-inverse); color: var(--text-on-brand); border-radius: var(--radius-md); box-shadow: var(--elevation-2); }
 .toast__text { flex: 1 0 0; min-width: 0; }
 .toast__action { color: var(--green-300); min-height: 44px; padding: 0 var(--space-4); }
+
+.progress--success { background: var(--bg-success-subtle); }
