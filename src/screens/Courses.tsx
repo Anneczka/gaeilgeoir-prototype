@@ -7,6 +7,8 @@ import { CourseRow } from '../components/CourseRow'
 import { LevelSheet } from './LevelSheet'
 import { content } from '../data/content'
 import { fill } from '../data/fill'
+import { fake } from '../data/fake'
+import { progressOf } from '../logic/progress'
 import { useStore } from '../state/store'
 
 /** 04 · Courses (+ 05 · Change level pop-up). */
@@ -16,6 +18,7 @@ export function Courses() {
   const location = useLocation()
   // Profile and Settings can open this page with the level sheet already showing
   const [sheet, setSheet] = useState(Boolean((location.state as { openLevel?: boolean } | null)?.openLevel))
+  const { lessonsDone } = progressOf(state)
   const level = content.level.options.find((o) => o.code === (state.level ?? 'A1'))!
 
   return (
@@ -32,7 +35,7 @@ export function Courses() {
         <CurrentCourseCard to="/conversation" />
         <h2 className="t-h2">{fill(c.listTitle, { name: level.name })}</h2>
         {c.list.map((course) => (
-          <CourseRow key={course.n} n={course.n} title={course.title} text={course.text} lessons={c.lessons} progress={course.n === 1 ? 3 / 15 : 0} />
+          <CourseRow key={course.n} n={course.n} title={course.title} text={course.text} lessons={c.lessons} progress={course.n === 1 ? lessonsDone / fake.course.lessonsTotal : 0} />
         ))}
       </div>
       <BottomNav />

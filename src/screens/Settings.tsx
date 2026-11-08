@@ -46,10 +46,10 @@ export function Settings() {
         </SettingsGroup>
         <SettingsGroup title={c.leaderboard}>
           <SettingsRow label={c.nickname} value={fake.user.nickname} onClick={unavailable} />
-          <div className="settings-row settings-row--toggle">
+          <label className="settings-row settings-row--toggle">
             <span className="t-body settings-row__label">{c.showMe}</span>
             <Toggle on={state.showOnLeaderboard} label={c.showMe} onChange={(v) => dispatch({ type: 'setLeaderboardVisible', visible: v })} />
-          </div>
+          </label>
         </SettingsGroup>
         <p className="t-small settings__note">{c.leaderboardNote}</p>
         <SettingsGroup title={c.subscription}>

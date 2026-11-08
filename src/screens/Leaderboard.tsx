@@ -91,7 +91,7 @@ export function Leaderboard() {
           </section>
         )}
 
-        <div className={joined ? undefined : 'lb__dim'} aria-hidden={joined ? undefined : true}>
+        <div className={joined ? undefined : 'lb__dim'} aria-hidden={joined ? undefined : true} inert={!joined}>
           <Podium entries={lb.podium.map((p) => ({ ...p, xp: xp(p.xp) }))} />
         </div>
 

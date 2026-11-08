@@ -4,6 +4,7 @@ import { Button } from '../components/Button'
 import { ProgressBar } from '../components/ProgressBar'
 import { content } from '../data/content'
 import { fill } from '../data/fill'
+import { progressOf } from '../logic/progress'
 import { useStore } from '../state/store'
 
 /** 05 · Change level (bottom sheet). Progress is kept when the level changes. */
@@ -29,7 +30,7 @@ export function LevelSheet({ onClose }: { onClose: () => void }) {
                 <span className="t-h3">{o.name}</span>
                 <span className="t-small option-card__desc">{c.texts[o.code as keyof typeof c.texts]}</span>
                 <ProgressBar value={isCurrent ? 3 / 135 : 0} label={`${o.name} progress`} small />
-                <span className={`t-caption level-row__meta${isCurrent ? ' level-row__meta--current' : ''}`}>{isCurrent ? c.yourLevel : c.courses}</span>
+                <span className={`t-caption level-row__meta${isCurrent ? ' level-row__meta--current' : ''}`}>{isCurrent ? fill(c.yourLevel, { lessons: String(progressOf(state).lessonsDone) }) : c.courses}</span>
               </span>
             </button>
           )

@@ -12,7 +12,7 @@ export function StepComplete({ kind = 'conversation' }: { kind?: 'conversation' 
   const { state } = useStore()
   const words = kind === 'words'
   const c = words ? content.wordComplete : content.complete
-  const lessonWords = String((3 + state.wordStep - 1) * 10) // same count as the 1000 Word Way path
+  const lessonWords = String(state.wordStep * 10) // same count as the 1000 Word Way path
   const nextTo = words ? '/practice/words/lesson' : '/conversation'
   const backTo = words ? '/practice/words' : '/courses/1'
   return (

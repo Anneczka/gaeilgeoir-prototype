@@ -5,7 +5,6 @@ import { TitleHeader } from '../components/TitleHeader'
 import { SegmentedTabs } from '../components/SegmentedTabs'
 import { Icon } from '../components/Icon'
 import { content } from '../data/content'
-import { fake } from '../data/fake'
 import { fill } from '../data/fill'
 import { useStore } from '../state/store'
 import volume from '../assets/icons/volume.svg'
@@ -33,7 +32,7 @@ export function MyWords() {
 
   // Newly saved words go on top and start as "to review"
   const fresh = [...state.savedWords].reverse().map((w) => ({ w, en: meaningOf(w), status: 'review' as const }))
-  const all = [...fresh, ...fake.myWords.filter((m) => !state.savedWords.includes(m.w))]
+  const all = fresh // a new participant starts with no saved words
   const shown = tab === 'all' ? all : all.filter((m) => m.status === tab)
   const tabs = c.tabs.map((t) => ({ key: t.key as Tab, label: fill(t.label, { n: String(all.length) }) }))
 
@@ -49,7 +48,7 @@ export function MyWords() {
       <div className="screen__body mywords">
         <SegmentedTabs label="Filter" options={tabs} value={tab} onChange={setTab} />
         {shown.length === 0 ? (
-          <p className="t-body mywords__empty">{tab === 'review' ? c.emptyReview : c.emptyLearned}</p>
+          <p className="t-body mywords__empty">{tab === 'all' ? c.emptyAll : tab === 'review' ? c.emptyReview : c.emptyLearned}</p>
         ) : (
           <ul className="mywords__list">
             {shown.map((m) => (

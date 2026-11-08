@@ -22,7 +22,7 @@ const NODE = 68
 export function WordWay() {
   const c = content.wordWay
   const { state } = useStore()
-  const current = 3 + state.wordStep
+  const current = 1 + state.wordStep
   const total = current + 3
   const lessons = Array.from({ length: total }, (_, i) => i + 1)
   const points = lessons.map((_, i) => `${centre(i)},${i * ROW + NODE / 2}`).join(' ')

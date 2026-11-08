@@ -15,7 +15,7 @@
 
 /* ---------- 00b Log in ---------- */
 .login__body { padding: var(--space-16) var(--space-20) 0; display: flex; flex-direction: column; gap: var(--space-20); }
-.login__forgot { color: var(--text-brand); align-self: flex-start; }
+.login__forgot { color: var(--text-brand); align-self: flex-start; min-height: 44px; display: inline-flex; align-items: center; }
 
 /* ---------- 01 / 02 Onboarding ---------- */
 .onboarding { padding: 20px var(--space-20) var(--space-24); display: flex; flex-direction: column; gap: var(--space-12); }
@@ -38,7 +38,7 @@
 .talk-card__text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .talk-card__body { opacity: 0.85; }
 .section-title { display: flex; align-items: center; justify-content: space-between; }
-.section-title__link { color: var(--text-brand); }
+.section-title__link { color: var(--text-brand); display: inline-flex; align-items: center; min-height: 44px; margin: -10px 0; }
 .course-card { display: flex; flex-direction: column; gap: var(--space-12); padding: var(--space-20); background: var(--bg-surface); border-radius: var(--radius-lg); box-shadow: var(--elevation-1); }
 .course-card__overline { color: var(--text-brand); }
 .course-card__body { color: var(--text-secondary); }
@@ -136,7 +136,7 @@
 .profile__card { display: flex; flex-direction: column; align-items: center; gap: var(--space-8); padding: var(--space-8) var(--space-20); }
 .profile__since { color: var(--text-secondary); }
 .profile__edit { width: 140px; }
-.profile__edit .btn { height: 40px; }
+.profile__edit .btn { height: 44px; }
 .profile__course { display: flex; align-items: center; gap: var(--space-12); padding: var(--space-16); background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-lg); }
 .profile__badge { width: 44px; height: 44px; flex: none; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-md); background: var(--bg-brand); color: var(--text-on-brand); }
 .profile__course-text { flex: 1 0 0; min-width: 0; display: flex; flex-direction: column; }
@@ -146,6 +146,7 @@
 /* ---------- 16 Settings ---------- */
 .settings { padding: var(--space-16) var(--space-20) var(--space-32); display: flex; flex-direction: column; gap: var(--space-24); }
 .settings__note { color: var(--text-secondary); margin-top: calc(var(--space-16) * -1); }
+.settings > * { flex: none; }
 .settings__delete { color: var(--text-error); height: 52px; width: 100%; text-align: center; }
 .settings__prototype { display: flex; flex-direction: column; gap: var(--space-8); padding-top: var(--space-16); border-top: 1px dashed var(--border-strong); }
 .settings__prototype .settings__note { margin-top: 0; }
@@ -157,7 +158,9 @@
 .lb > * { flex: none; }
 .lb__art { height: 126px; flex: none; border-radius: var(--radius-lg); background: var(--bg-brand-subtle); box-shadow: var(--elevation-1); overflow: hidden; }
 .lb__art img { display: block; }
-.lb__dim { opacity: 0.6; }
+.lb__dim { position: relative; }
+/* Faded with a see-through layer on top (not opacity), so the text colours underneath keep their contrast */
+.lb__dim::after { content: ''; position: absolute; inset: 0; background: rgba(247, 248, 250, 0.4); pointer-events: none; }
 .lb__card { display: flex; flex-direction: column; padding: var(--space-8) 0; overflow: hidden; background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-lg); }
 .lb__near { color: var(--text-secondary); margin-bottom: calc(var(--space-8) * -1); }
 .lb__hidden { padding: var(--space-16); background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-lg); color: var(--text-secondary); }
@@ -265,3 +268,16 @@
 .trial__plan--on { background: var(--bg-brand-subtle); border-color: var(--border-brand); }
 .trial__actions { flex: none; display: flex; flex-direction: column; gap: var(--space-8); padding: var(--space-12) var(--space-20) 34px; }
 .trial__note { text-align: center; color: var(--text-secondary); }
+
+/* ---------- Phone status bar: transparent on every page, icons follow the colour behind them ---------- */
+/* Pages without a header: the content scrolls under the bar, like Home (the 56 px is the bar's space at the top) */
+.screen--top56 { padding-top: 0; }
+.screen--top56 > .screen__body { padding-top: calc(56px + var(--space-16)); }
+/* Pages with a title header: the header's own colour continues behind the bar, so there is no band at the top */
+.screen--top58 > .title-header { flex: none; height: 114px; margin-top: -58px; padding-top: 58px; }
+.screen--top56 > .trial { padding-top: calc(58px + var(--space-32)); }
+/* Content that scrolls up behind the bar fades out there, so the time and icons stay readable (the bar itself stays transparent) */
+.home__scroll, .screen--top56 > .screen__body {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, transparent 28px, #000 58px);
+  mask-image: linear-gradient(to bottom, transparent 0, transparent 28px, #000 58px);
+}

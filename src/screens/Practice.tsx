@@ -20,9 +20,9 @@ const tileIcons: Record<string, string> = { quizzes: tileQuizzes, songs: tileSon
 export function Practice() {
   const c = content.practice
   const { state } = useStore()
-  const lesson = 3 + state.wordStep
+  const lesson = 1 + state.wordStep
   const wordsLearned = (lesson - 1) * 10
-  const vars = { lesson: String(lesson), words: String(wordsLearned), saved: String(12 + state.savedWords.length) }
+  const vars = { lesson: String(lesson), words: String(wordsLearned), saved: String(state.savedWords.length) }
   return (
     <main className="screen screen--surface screen--top56">
       <StatusBar />

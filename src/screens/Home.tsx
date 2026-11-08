@@ -5,7 +5,7 @@ import { Chip } from '../components/Chip'
 import { CurrentCourseCard } from '../components/CurrentCourseCard'
 import { RankCard } from '../components/RankCard'
 import { content } from '../data/content'
-import { fake } from '../data/fake'
+import { progressOf } from '../logic/progress'
 import { useStore } from '../state/store'
 import { tutorLook } from '../data/tutors'
 import flame from '../assets/icons/flame.svg'
@@ -29,17 +29,14 @@ const tileIcons: Record<string, string> = {
 export function Home() {
   const c = content.home
   const { state } = useStore()
-  const saved = 12 + state.savedWords.length
+  const { streakDays, savedWords: saved } = progressOf(state)
   return (
     <main className="screen">
       <StatusBar />
       <div className="screen__body home__scroll">
         <div className="home__greeting">
-          <div>
-            <p className="t-body home__hello">{c.greeting}</p>
-            <p className="t-h1">{fake.user.name}</p>
-          </div>
-          <Chip icon={flame}>{`${fake.streakDays}-day streak`}</Chip>
+          <h1 className="t-h1">{c.greeting}</h1>
+          {streakDays > 0 && <Chip icon={flame}>{`${streakDays}-day streak`}</Chip>}
         </div>
 
         <Link to="/conversation" className="talk-card">

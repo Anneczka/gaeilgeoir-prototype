@@ -7,6 +7,7 @@ import { Stat } from '../components/Stat'
 import { content } from '../data/content'
 import { fake } from '../data/fake'
 import { fill } from '../data/fill'
+import { progressOf } from '../logic/progress'
 import { useStore } from '../state/store'
 import streak from '../assets/icons/stat-streak.svg'
 import lessons from '../assets/icons/stat-lessons.svg'
@@ -21,7 +22,8 @@ export function Profile() {
   const navigate = useNavigate()
   const { state } = useStore()
   const level = content.level.options.find((o) => o.code === (state.level ?? 'A1'))!
-  const vars = { streak: String(fake.streakDays), saved: String(12 + state.savedWords.length), dialect: state.dialect ?? 'Munster' }
+  const progress = progressOf(state)
+  const vars = { streak: String(progress.streakDays), saved: String(progress.savedWords), lessons: String(progress.lessonsDone), dialect: state.dialect ?? 'Munster' }
   return (
     <main className="screen screen--surface screen--top56">
       <StatusBar />
@@ -44,7 +46,7 @@ export function Profile() {
           <span className="profile__badge t-h3">{level.code}</span>
           <span className="profile__course-text">
             <span className="t-h3">{level.name}</span>
-            <span className="t-small profile__course-line">{c.courseLine}</span>
+            <span className="t-small profile__course-line">{fill(c.courseLine, vars)}</span>
           </span>
           <button type="button" className="chip t-body-strong" onClick={() => navigate('/courses', { state: { openLevel: true } })}>
             {c.change}

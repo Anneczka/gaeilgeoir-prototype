@@ -8,12 +8,15 @@ import { ProgressBar } from '../components/ProgressBar'
 import { content } from '../data/content'
 import { fake } from '../data/fake'
 import { fill } from '../data/fill'
+import { progressOf } from '../logic/progress'
+import { useStore } from '../state/store'
 import back from '../assets/icons/back.svg'
 
 /** 06 · Course detail: modules and steps, with a button to the next step. */
 export function CourseDetail() {
   const c = content.courseDetail
   const navigate = useNavigate()
+  const { lessonsDone } = progressOf(useStore().state)
   return (
     <main className="screen screen--top56">
       <StatusBar />
@@ -24,7 +27,7 @@ export function CourseDetail() {
         </button>
         <h1 className="t-h1">{c.title}</h1>
         <p className="t-small course-detail__meta">{c.meta}</p>
-        <ProgressBar value={fake.course.lessonsDone / fake.course.lessonsTotal} label="Course progress" />
+        <ProgressBar value={lessonsDone / fake.course.lessonsTotal} label="Course progress" />
         <Button to="/conversation">{c.cta}</Button>
         {c.modules.map((m) => (
           <section key={m.title} className="module-card" aria-label={m.title}>

@@ -12,7 +12,7 @@ export function FreeTrial() {
   const navigate = useNavigate()
   const [plan, setPlan] = useState('annual')
   return (
-    <main className="screen screen--top58">
+    <main className="screen screen--top56">
       <StatusBar />
       <div className="screen__body trial">
         <p className="t-overline trial__overline">{c.overline}</p>
