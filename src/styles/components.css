@@ -89,6 +89,8 @@
 .avatar--s { width: 32px; height: 32px; }
 .avatar.avatar--tint { background: var(--bg-success-subtle); color: var(--text-success); }
 .avatar.avatar--photo { background-color: var(--bg-subtle); background-size: 260%; background-position: 50% 33%; }
+/* small round photo next to chat messages: show more of the head and shoulders */
+.avatar.avatar--s.avatar--photo { background-size: 190%; }
 
 /* ---------- Activity header ---------- */
 .activity-header { display: flex; align-items: center; gap: var(--space-8); height: 56px; padding: 0 var(--space-4); background: var(--bg-surface); flex: none; }

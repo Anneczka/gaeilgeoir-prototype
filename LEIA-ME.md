@@ -24,3 +24,9 @@ O Node.js do seu Mac (versão 14) é antigo demais. Por isso o projeto traz uma 
 
 ## Antes de publicar
 Nada é publicado sem perguntar a você.
+
+## Publicar o protótipo para os testes (só com a sua aprovação)
+
+1. Gere a versão final: `npm run build` (cria a pasta `dist`).
+2. Opção mais simples: abra https://app.netlify.com/drop e arraste a pasta `dist`. Você recebe um link para enviar aos participantes.
+3. Opção GitHub: crie um repositório, envie o projeto e ative **Settings → Pages → Source: GitHub Actions**. O arquivo `.github/workflows/deploy.yml` publica sozinho a cada envio.
