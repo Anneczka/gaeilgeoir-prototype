@@ -77,6 +77,15 @@
   --accent-blue-50: #e8f3fd;
   --accent-blue-500: #2196f2;
 
+  /* Podium medals (colours drawn in the Figma leaderboard) */
+  --medal-gold-fill: #f6d555;
+  --medal-gold-edge: #d79511;
+  --medal-gold-base: #efb217;
+  --medal-silver-base: #e0e0df;
+  --medal-bronze-base: #dfbb7f;
+  --medal-bronze-edge: #99692c;
+  --medal-bronze-text: #5c3e16;
+
   /* Spacing (4-pt grid) */
   --space-0: 0;
   --space-4: 4px;

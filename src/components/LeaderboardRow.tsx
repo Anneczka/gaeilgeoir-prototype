@@ -1,6 +1,6 @@
 import { formatXp } from '../logic/leaderboard'
 
-/** UI/Leaderboard row (You = true highlights the learner's own row). */
+/** UI/Leaderboard row (You = true highlights the learner's own row; other rows show XP in a green pill). */
 export function LeaderboardRow({ rank, initials, name, xp, you = false }: { rank: number; initials: string; name: string; xp: number; you?: boolean }) {
   return (
     <div className={`lb-row${you ? ' lb-row--you' : ''}`} aria-current={you ? 'true' : undefined}>

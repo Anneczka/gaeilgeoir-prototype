@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { StatusBar } from '../components/StatusBar'
-import { BottomNav } from '../components/BottomNav'
 import { BottomSheet } from '../components/Modal'
 import { Button } from '../components/Button'
 import { Icon } from '../components/Icon'
@@ -17,7 +16,7 @@ import { formatXp, isOnBoard, scaleXp, type Period } from '../logic/leaderboard'
 import { useStore } from '../state/store'
 import back from '../assets/icons/back.svg'
 import help from '../assets/icons/help.svg'
-import castle from '../assets/img/castle.svg'
+import castle from '../assets/img/castle-wide.svg'
 import mic from '../assets/icons/mic.svg'
 import words from '../assets/icons/words.svg'
 import quiz from '../assets/icons/tile-quizzes.svg'
@@ -53,7 +52,7 @@ export function Leaderboard() {
 
       <div className="screen__body lb">
         <div className="lb__art" aria-hidden="true">
-          <img src={castle} width={335} height={96} alt="" />
+          <img src={castle} width={335} height={126} alt="" />
         </div>
         <SegmentedTabs label="Period" options={c.tabs as unknown as { key: Period; label: string }[]} value={period} onChange={setPeriod} />
 
@@ -116,7 +115,6 @@ export function Leaderboard() {
           </>
         )}
       </div>
-      <BottomNav activePath="/profile" />
 
       {xpSheet && (
         <BottomSheet label={c.xp.title} onClose={() => setXpSheet(false)} dark className="sheet--xp">
