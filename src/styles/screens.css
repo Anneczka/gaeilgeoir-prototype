@@ -119,3 +119,33 @@
 .path-node__circle--locked { background: var(--bg-subtle); border: 2px solid var(--border-default); }
 .path-node__label--locked { color: var(--text-tertiary); }
 .path-node__range { color: var(--text-secondary); }
+
+/* ---------- 04 Courses ---------- */
+.courses { padding: var(--space-16) var(--space-20) 108px; display: flex; flex-direction: column; gap: var(--space-16); }
+.courses__level { display: flex; align-items: center; justify-content: space-between; min-height: 48px; }
+.courses__level-text { color: var(--text-secondary); }
+
+/* ---------- 06 Course detail ---------- */
+.course-detail { padding: var(--space-16) var(--space-20) 108px; display: flex; flex-direction: column; gap: var(--space-16); }
+.course-detail__back { display: flex; align-items: center; gap: var(--space-4); align-self: flex-start; min-height: 44px; margin: -12px 0 -12px -4px; padding-left: 4px; color: var(--text-secondary); }
+.course-detail__meta { color: var(--text-secondary); margin-top: calc(var(--space-8) * -1); }
+.module-card { display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-12) var(--space-16); background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-lg); }
+
+/* ---------- 15 Profile ---------- */
+.profile { padding: var(--space-16) var(--space-20) 108px; display: flex; flex-direction: column; gap: var(--space-16); }
+.profile__card { display: flex; flex-direction: column; align-items: center; gap: var(--space-8); padding: var(--space-8) var(--space-20); }
+.profile__since { color: var(--text-secondary); }
+.profile__edit { width: 140px; }
+.profile__edit .btn { height: 40px; }
+.profile__course { display: flex; align-items: center; gap: var(--space-12); padding: var(--space-16); background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-lg); }
+.profile__badge { width: 44px; height: 44px; flex: none; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-md); background: var(--bg-brand); color: var(--text-on-brand); }
+.profile__course-text { flex: 1 0 0; min-width: 0; display: flex; flex-direction: column; }
+.profile__course-line { color: var(--text-secondary); }
+.stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-12); }
+
+/* ---------- 16 Settings ---------- */
+.settings { padding: var(--space-16) var(--space-20) var(--space-32); display: flex; flex-direction: column; gap: var(--space-24); }
+.settings__note { color: var(--text-secondary); margin-top: calc(var(--space-16) * -1); }
+.settings__delete { color: var(--text-error); height: 52px; width: 100%; text-align: center; }
+.settings__prototype { display: flex; flex-direction: column; gap: var(--space-8); padding-top: var(--space-16); border-top: 1px dashed var(--border-strong); }
+.settings__prototype .settings__note { margin-top: 0; }

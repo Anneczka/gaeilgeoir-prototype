@@ -41,6 +41,11 @@ describe('prototype store', () => {
     expect(s.savedWords).toEqual([])
   })
 
+  it('setLeaderboardVisible switches the leaderboard setting', () => {
+    expect(initialState.showOnLeaderboard).toBe(true)
+    expect(reducer(initialState, { type: 'setLeaderboardVisible', visible: false }).showOnLeaderboard).toBe(false)
+  })
+
   it('setVoice stores speaker and speed', () => {
     const s = reducer(initialState, { type: 'setVoice', speaker: 'Sibéal', speed: '1.5x' })
     expect(s.voice).toEqual({ speaker: 'Sibéal', speed: '1.5x' })

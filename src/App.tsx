@@ -11,6 +11,10 @@ import { StepComplete } from './screens/StepComplete'
 import { Practice } from './screens/Practice'
 import { WordWay } from './screens/WordWay'
 import { WordLesson } from './screens/WordLesson'
+import { Courses } from './screens/Courses'
+import { CourseDetail } from './screens/CourseDetail'
+import { Profile } from './screens/Profile'
+import { Settings } from './screens/Settings'
 
 /** Sends people who are not logged in back to Welcome (e.g. after a browser refresh). */
 function RequireLogin() {
@@ -49,9 +53,11 @@ export default function App() {
                 <Route path="/practice/words" element={<WordWay />} />
                 <Route path="/practice/words/lesson" element={<WordLesson />} />
                 <Route path="/practice/words/complete" element={<StepComplete kind="words" />} />
-                <Route path="/courses" element={<Placeholder title="Courses" tab />} />
+                <Route path="/courses" element={<Courses />} />
+                <Route path="/courses/1" element={<CourseDetail />} />
                 <Route path="/practice" element={<Practice />} />
-                <Route path="/profile" element={<Placeholder title="Profile" tab />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/settings" element={<Settings />} />
                 <Route path="*" element={<Placeholder />} />
               </Route>
             </Routes>

@@ -2,12 +2,12 @@ import { Link } from 'react-router-dom'
 import { StatusBar } from '../components/StatusBar'
 import { BottomNav } from '../components/BottomNav'
 import { Chip } from '../components/Chip'
-import { ProgressBar } from '../components/ProgressBar'
+import { CurrentCourseCard } from '../components/CurrentCourseCard'
+import { RankCard } from '../components/RankCard'
 import { content } from '../data/content'
 import { fake } from '../data/fake'
 import { useStore } from '../state/store'
 import flame from '../assets/icons/flame.svg'
-import chevron from '../assets/icons/chevron-right.svg'
 import tileWords from '../assets/icons/tile-words.svg'
 import tileQuizzes from '../assets/icons/tile-quizzes.svg'
 import tileSongs from '../assets/icons/tile-songs.svg'
@@ -62,25 +62,9 @@ export function Home() {
           </Link>
         </div>
 
-        <Link to="/courses/1" className="course-card">
-          <span className="t-overline course-card__overline">{c.courseOverline}</span>
-          <span className="t-h2">{c.courseTitle}</span>
-          <span className="t-small course-card__body">{c.courseBody}</span>
-          <ProgressBar value={fake.course.lessonsDone / fake.course.lessonsTotal} label="Course progress" />
-          <span className="course-card__footer">
-            <span className="t-caption course-card__count">{`${fake.course.lessonsDone} of ${fake.course.lessonsTotal} lessons`}</span>
-            <span className="t-body-strong course-card__cta">{c.courseContinue}</span>
-          </span>
-        </Link>
+        <CurrentCourseCard />
 
-        <Link to="/leaderboard" className="rank-card">
-          <span className="rank-card__num t-body-strong">{fake.leaderboard.rank}</span>
-          <span className="rank-card__text">
-            <span className="t-body-strong">{c.leaderboardTitle}</span>
-            <span className="t-small">{`${fake.leaderboard.xpToNextRank} XP to reach ${fake.leaderboard.rank - 1}th · See leaderboard`}</span>
-          </span>
-          <img src={chevron} width={24} height={24} alt="" />
-        </Link>
+        <RankCard />
 
         <div className="section-title">
           <h2 className="t-h2">{c.practiseTitle}</h2>

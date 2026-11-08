@@ -11,6 +11,7 @@ export type State = {
   convStep: number
   wordStep: number
   voice: { speaker: Speaker; speed: Speed }
+  showOnLeaderboard: boolean
 }
 
 export type Action =
@@ -22,6 +23,7 @@ export type Action =
   | { type: 'setVoice'; speaker: Speaker; speed: Speed }
   | { type: 'saveWord'; word: string }
   | { type: 'removeWord'; word: string }
+  | { type: 'setLeaderboardVisible'; visible: boolean }
   | { type: 'reset' }
 
 export const initialState: State = {
@@ -32,6 +34,7 @@ export const initialState: State = {
   convStep: 0,
   wordStep: 0,
   voice: { speaker: 'Pádraig', speed: '1x' },
+  showOnLeaderboard: true,
 }
 
 export function reducer(state: State, action: Action): State {
@@ -54,6 +57,8 @@ export function reducer(state: State, action: Action): State {
         : { ...state, savedWords: [...state.savedWords, action.word] }
     case 'removeWord':
       return { ...state, savedWords: state.savedWords.filter((w) => w !== action.word) }
+    case 'setLeaderboardVisible':
+      return { ...state, showOnLeaderboard: action.visible }
     case 'reset':
       return initialState
   }
