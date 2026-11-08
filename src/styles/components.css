@@ -256,6 +256,7 @@
 .lb-row__avatar { width: 32px; height: 32px; flex: none; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-full); background: var(--bg-success-subtle); color: var(--text-success); }
 .lb-row__name { flex: 1 0 0; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .lb-row__xp { flex: none; white-space: nowrap; padding: 0 var(--space-8); border-radius: 100px; background: var(--bg-brand); color: var(--text-on-brand); }
+.lb-row:last-child { border-bottom: 0; }
 .lb-row--you { background: var(--bg-brand-subtle); border-top: 0.5px solid var(--border-brand); border-bottom: 0.5px solid var(--border-brand); }
 .lb-row--you .lb-row__rank { color: var(--text-brand); }
 .lb-row--you .lb-row__xp { padding: 0; background: none; color: var(--text-brand); }
