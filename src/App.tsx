@@ -16,6 +16,8 @@ import { CourseDetail } from './screens/CourseDetail'
 import { Profile } from './screens/Profile'
 import { Settings } from './screens/Settings'
 import { Leaderboard } from './screens/Leaderboard'
+import { Songs } from './screens/Songs'
+import { Quizzes } from './screens/Quizzes'
 
 /** Sends people who are not logged in back to Welcome (e.g. after a browser refresh). */
 function RequireLogin() {
@@ -59,6 +61,8 @@ export default function App() {
                 <Route path="/practice" element={<Practice />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/settings" element={<Settings />} />
+                <Route path="/practice/songs" element={<Songs />} />
+                <Route path="/practice/quizzes" element={<Quizzes />} />
                 <Route path="/leaderboard" element={<Leaderboard />} />
                 <Route path="*" element={<Placeholder />} />
               </Route>
