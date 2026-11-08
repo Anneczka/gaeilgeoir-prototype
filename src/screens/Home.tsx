@@ -7,6 +7,7 @@ import { RankCard } from '../components/RankCard'
 import { content } from '../data/content'
 import { fake } from '../data/fake'
 import { useStore } from '../state/store'
+import { tutorLook } from '../data/tutors'
 import flame from '../assets/icons/flame.svg'
 import tileWords from '../assets/icons/tile-words.svg'
 import tileQuizzes from '../assets/icons/tile-quizzes.svg'
@@ -43,9 +44,7 @@ export function Home() {
 
         <Link to="/conversation" className="talk-card">
           <div className="talk-card__row">
-            <span className="avatar avatar--m t-h3" aria-hidden="true">
-              {fake.tutor.initial}
-            </span>
+            <span className="avatar avatar--m avatar--photo" style={{ backgroundImage: `url("${tutorLook[state.voice.speaker].photo}")`, backgroundPosition: tutorLook[state.voice.speaker].avatarPos }} aria-hidden="true" />
             <div className="talk-card__text">
               <span className="t-overline">{c.talkOverline}</span>
               <span className="t-h2">{c.talkTitle}</span>
