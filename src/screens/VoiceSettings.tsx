@@ -9,7 +9,7 @@ import { useStore, type Speaker, type Speed } from '../state/store'
 import volume from '../assets/icons/volume.svg'
 
 /** 09b · Voice settings (bottom sheet). Changes apply only when "Save" is pressed. */
-export function VoiceSettings({ onClose, onPreview }: { onClose: () => void; onPreview: () => void }) {
+export function VoiceSettings({ onClose, onPreview }: { onClose: () => void; onPreview: (speaker: string, speed: string) => void }) {
   const c = content.voice
   const { state, dispatch } = useStore()
   const [speaker, setSpeaker] = useState<Speaker>(state.voice.speaker)
@@ -41,7 +41,7 @@ export function VoiceSettings({ onClose, onPreview }: { onClose: () => void; onP
       </div>
       <div className="setting setting--footer">
         <p className="t-small setting__note">{fill(c.provider, { speaker })}</p>
-        <Button variant="outline" onClick={onPreview}>
+        <Button variant="outline" onClick={() => onPreview(speaker, speed)}>
           <Icon src={volume} />
           {c.preview}
         </Button>

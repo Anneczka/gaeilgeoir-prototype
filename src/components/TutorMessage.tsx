@@ -1,6 +1,7 @@
 import { Icon } from './Icon'
 import volume from '../assets/icons/volume.svg'
 import translate from '../assets/icons/translate.svg'
+import { messageText } from '../audio/text'
 import { tutorLook, type TutorName } from '../data/tutors'
 
 import type { Lines } from '../data/types'
@@ -13,7 +14,7 @@ type Props = {
   avatar?: { kind: 'photo'; speaker: TutorName } | { kind: 'initial'; letter: string } | null
   /** Pill above the text, e.g. "ALMOST THERE" for corrections. */
   badge?: string
-  onPlay: () => void
+  onPlay: (text: string) => void
   onTranslate: () => void
   onWord?: (word: string, meaning: string) => void
 }
@@ -47,7 +48,7 @@ export function TutorMessage({ lines, english, showEnglish, avatar, badge, onPla
         </div>
         {showEnglish && <p className="t-small tutor-message__english">{english}</p>}
         <div className="tutor-message__actions">
-          <button type="button" className="hit-44" aria-label="Play tutor audio" onClick={onPlay}>
+          <button type="button" className="hit-44" aria-label="Play tutor audio" onClick={() => onPlay(messageText(lines))}>
             <Icon src={volume} size={20} color="var(--icon-brand)" />
           </button>
           <button type="button" className="hit-44" aria-label="Show or hide English translation" aria-pressed={showEnglish} onClick={onTranslate}>

@@ -9,6 +9,7 @@ import { Toast } from '../components/Toast'
 import { VoiceSettings } from './VoiceSettings'
 import { content } from '../data/content'
 import { fake } from '../data/fake'
+import { speak } from '../audio/speak'
 import { useStore } from '../state/store'
 
 /** 16 · Settings (+ "Reset prototype" for test sessions). */
@@ -84,7 +85,10 @@ export function Settings() {
           <Toast message={c.notInPrototype} />
         </div>
       )}
-      {voiceOpen && <VoiceSettings onClose={() => setVoiceOpen(false)} onPreview={() => setVoiceOpen(false)} />}
+      {voiceOpen && <VoiceSettings onClose={() => setVoiceOpen(false)} onPreview={(sp, spd) => {
+            setVoiceOpen(false)
+            speak('Dia duit', sp, spd)
+          }} />}
     </main>
   )
 }

@@ -18,6 +18,8 @@ import { content } from '../data/content'
 import { fill } from '../data/fill'
 import { isCorrect, normalize } from '../logic/conversation'
 import { useStore } from '../state/store'
+import { speak, stopSpeaking } from '../audio/speak'
+import { messageText } from '../audio/text'
 import type { Step } from '../data/types'
 import pencil from '../assets/icons/pencil.svg'
 
@@ -84,7 +86,23 @@ export function ConversationView({ steps, vars = {}, exitTo, completeTo, onCompl
     timers.current.push(t)
     return t
   }
-  useEffect(() => () => timers.current.forEach(clearTimeout), [])
+  useEffect(
+    () => () => {
+      timers.current.forEach(clearTimeout)
+      stopSpeaking()
+    },
+    [],
+  )
+
+  // The tutor speaks each new message (and each correction) by itself, like in the real app
+  useEffect(() => {
+    const last = msgs[msgs.length - 1]
+    const text = last.kind === 'tutor' ? messageText(steps[last.step].tutor.lines) : last.kind === 'fix' ? messageText(last.lines.map((l) => [l])) : null
+    if (!text) return
+    const t = window.setTimeout(() => playTutor(text), 450)
+    return () => window.clearTimeout(t)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [msgs.length])
 
   // Keep the newest message in view
   useEffect(() => {
@@ -98,8 +116,10 @@ export function ConversationView({ steps, vars = {}, exitTo, completeTo, onCompl
   const progress = finished ? 1 : 0.4 + 0.2 * stepIdx
   const avatar = videoOn ? null : ({ kind: 'photo', speaker } as const)
 
-  function playTutor() {
+  /** Plays the recorded voice for `text`. If there is no audio file for it, only the speaking animation shows. */
+  function playTutor(text?: string, who: string = speaker, speed: string = state.voice.speed) {
     setSpeaking(true)
+    if (text && speak(text, who, speed, () => setSpeaking(false))) return
     later(() => setSpeaking(false), SPEAKING_MS)
   }
 
@@ -193,7 +213,7 @@ export function ConversationView({ steps, vars = {}, exitTo, completeTo, onCompl
 
   const tag = fill(c.tutorTag, { speaker, dialect })
   const initial = speaker[0]
-  const messageProps = { showEnglish, avatar, onPlay: playTutor, onTranslate: () => setShowEnglish((v) => !v), onWord: openWord }
+  const messageProps = { showEnglish, avatar, onPlay: (text: string) => playTutor(text), onTranslate: () => setShowEnglish((v) => !v), onWord: openWord }
 
   return (
     <main className="screen screen--surface screen--top48">
@@ -215,7 +235,7 @@ export function ConversationView({ steps, vars = {}, exitTo, completeTo, onCompl
               <TutorMessage key={m.id} lines={m.lines.map((l) => [l])} english={m.english} badge={c.almostThere} {...messageProps} />
             ),
           )}
-          {showSuggestion && !finished && <SuggestionCard overline={c.suggestionOverline} irish={step.expected.irish} english={step.expected.english} onPlay={playTutor} onClose={() => setShowSuggestion(false)} />}
+          {showSuggestion && !finished && <SuggestionCard overline={c.suggestionOverline} irish={step.expected.irish} english={step.expected.english} onPlay={() => playTutor(step.expected.irish)} onClose={() => setShowSuggestion(false)} />}
         </div>
       </div>
 
@@ -286,14 +306,14 @@ export function ConversationView({ steps, vars = {}, exitTo, completeTo, onCompl
         </BottomSheet>
       )}
 
-      {wordSheet && <SaveWord word={wordSheet.w} meaning={wordSheet.en} saved={wordSaved} onToggleSave={toggleWord} onPlay={playTutor} onClose={() => setWordSheet(null)} />}
+      {wordSheet && <SaveWord word={wordSheet.w} meaning={wordSheet.en} saved={wordSaved} onToggleSave={toggleWord} onPlay={() => playTutor(wordSheet.w)} onClose={() => setWordSheet(null)} />}
 
       {settingsOpen && (
         <VoiceSettings
           onClose={() => setSettingsOpen(false)}
-          onPreview={() => {
+          onPreview={(sp, spd) => {
             setSettingsOpen(false)
-            playTutor()
+            playTutor('Dia duit', sp, spd)
           }}
         />
       )}

@@ -7,6 +7,7 @@ import { Icon } from '../components/Icon'
 import { content } from '../data/content'
 import { fill } from '../data/fill'
 import { useStore } from '../state/store'
+import { speak } from '../audio/speak'
 import volume from '../assets/icons/volume.svg'
 
 type Tab = 'all' | 'review' | 'learned'
@@ -37,8 +38,9 @@ export function MyWords() {
   const tabs = c.tabs.map((t) => ({ key: t.key as Tab, label: fill(t.label, { n: String(all.length) }) }))
 
   function play(w: string) {
-    setPlaying(w) // the voice is simulated: just a short highlight
-    window.setTimeout(() => setPlaying((p) => (p === w ? null : p)), 1500)
+    setPlaying(w)
+    const done = () => setPlaying((p) => (p === w ? null : p))
+    if (!speak(w, state.voice.speaker, state.voice.speed, done)) window.setTimeout(done, 1500) // no audio file: just a short highlight
   }
 
   return (
