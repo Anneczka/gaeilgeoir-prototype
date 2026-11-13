@@ -30,7 +30,6 @@ type Msg =
   | { id: number; kind: 'fix'; lines: readonly string[]; english: string }
 
 const MIN_RECORDING_MS = 1200 // a quick tap still shows a believable recording
-const SPEAKING_MS = 2500
 const TOAST_MS = 3500
 
 /**
@@ -71,7 +70,6 @@ export function ConversationView({ steps, vars = {}, exitTo, completeTo, onCompl
   const [typing, setTyping] = useState(false)
   const [draft, setDraft] = useState('')
   const [showEnglish, setShowEnglish] = useState(true)
-  const [speaking, setSpeaking] = useState(false)
   const [exitOpen, setExitOpen] = useState(false)
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [wordSheet, setWordSheet] = useState<{ w: string; en: string } | null>(null)
@@ -116,11 +114,9 @@ export function ConversationView({ steps, vars = {}, exitTo, completeTo, onCompl
   const progress = finished ? 1 : 0.4 + 0.2 * stepIdx
   const avatar = videoOn ? null : ({ kind: 'photo', speaker } as const)
 
-  /** Plays the recorded voice for `text`. If there is no audio file for it, only the speaking animation shows. */
+  /** Plays the recorded voice for `text` (the tutor's picture stays as it is). No audio file for it = silence. */
   function playTutor(text?: string, who: string = speaker, speed: string = state.voice.speed) {
-    setSpeaking(true)
-    if (text && speak(text, who, speed, () => setSpeaking(false))) return
-    later(() => setSpeaking(false), SPEAKING_MS)
+    if (text) speak(text, who, speed)
   }
 
   // --- simulated "hold to speak" ---
@@ -212,7 +208,6 @@ export function ConversationView({ steps, vars = {}, exitTo, completeTo, onCompl
   }
 
   const tag = fill(c.tutorTag, { speaker, dialect })
-  const initial = speaker[0]
   const messageProps = { showEnglish, avatar, onPlay: (text: string) => playTutor(text), onTranslate: () => setShowEnglish((v) => !v), onWord: openWord }
 
   return (
@@ -223,7 +218,7 @@ export function ConversationView({ steps, vars = {}, exitTo, completeTo, onCompl
       <div className="screen__body conv__body" ref={bodyRef}>
         <div className="conv__sticky">
           <StepGoal overline={fill(step.overline, vars)} title={fill(step.goal, vars)} done={step.done} />
-          {videoOn && <TutorVideo tag={tag} initial={initial} speaker={speaker} speaking={speaking} onHide={() => setVideoOn(false)} />}
+          {videoOn && <TutorVideo tag={tag} speaker={speaker} onHide={() => setVideoOn(false)} />}
         </div>
         <div className="conv__chat">
           {msgs.map((m) =>
